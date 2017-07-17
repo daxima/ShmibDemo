@@ -1,0 +1,31 @@
+<% include partials/header.ejs%>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <% // include file specific css files here %>
+        </head>
+
+        <body id="ratenum" class="ratenum-reviewBG" ng-app="shmib">
+            <div id="form-container" class="text-center">
+                <form>
+                    <div ui-view></div>
+                </form>
+            </div>
+            <script>
+                var reviewDetail = <%- JSON.stringify(ReviewDetail) %>;
+                var user = <%- JSON.stringify(User) %>;
+                var reviewComment = <%- JSON.stringify(ReviewComment) %>;
+                var companyName = <%- JSON.stringify(CompanyName) %>;
+                var profileImage = <%- JSON.stringify(profileImage) %>;
+                var biztype = <%- JSON.stringify(biztype) %>;
+
+            </script>
+
+            <% include partials/jsfiles.ejs%>
+
+                <script type="text/javascript" src="/js/routes/myReviewDetail.routes.js"></script>
+                <script type="text/javascript" src="/js/controllers/myReviewDetail.client.controller.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                <script type="text/javascript" src="/js/controllers/alert.modal.client.controller.js"></script>
+        </body>
+
+        </html>

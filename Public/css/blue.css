@@ -1,0 +1,82 @@
+.primary-bg-blue {
+    background: #528cc7 !important;
+}
+
+body .primary-bg-blue {
+    background: #528cc7 !important;
+}
+
+.ng-empty.ng-invalid-required.ng-touched {
+    border-bottom: 1px solid #528cc7 !important;
+}
+
+.profile .btn:hover,
+.profile .btn:focus {
+    background: #528cc7 !important;
+}
+
+.profile .btn,
+.profile .white-button {
+    background: #528cc7 !important;
+}
+
+#topBar .navbar-default .navbar-nav > .open > a,
+#topBar .navbar-default .navbar-nav > .open > a:hover,
+#topBar .navbar-default .navbar-nav > .open > a:focus {
+    background: #4679ad !important;
+}
+
+.reviewListing .starsWrapper span {
+    color: #528cc7 !important;
+}
+
+.reviewListing a.showDetails,
+.reviewListing a.showDetails:hover,
+.reviewListing a.showDetails:active,
+.reviewListing a.showDetails:visited {
+    color: #528cc7 !important;
+}
+
+body .pagination > .active > a,
+body .pagination > .active > span,
+body .pagination > .active > a:hover,
+body .pagination > .active > span:hover,
+body .pagination > .active > a:focus,
+body .pagination > .active > span:focus {
+    border-color: #528cc7 !important;
+    background-color: #528cc7 !important;
+}
+
+.uil-ring-css > div {
+    box-shadow: 0 6px 0 0 #528cc7 !important;
+}
+
+.rdHeader .glyphicon {
+    color: #528cc7 !important;
+}
+
+.close_custom:before,
+.close_custom:after,
+.close_custom2:before,
+.close_custom2:after {
+    background: #528cc7 !important;
+}
+
+.btnActive {
+    background: #528cc7 !important;
+}
+
+.profileDetails a.rpLink,
+.profileDetails a.rpLink:hover,
+.profileDetails a.rpLink:active,
+.profileDetails a.rpLink:visited {
+    color: #528cc7 !important;
+}
+
+.container-signup label {
+    color: #528cc7 !important;
+}
+
+.profileDetails .btn.primary-bg-blue:active {
+    background: #528cc7 !important;
+}

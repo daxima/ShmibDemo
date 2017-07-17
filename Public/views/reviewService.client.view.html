@@ -1,0 +1,17 @@
+<div id="ratenum-3" class="text-center page-content" style="height: 100%;">
+    <img src="/images/chevron_logo.png" class="img-responsive" style="background-color:#fff;padding:10px;max-height:200px;" />
+    <div class="row">
+        <div class="col-md-12">
+            <h3 ng-if="ServiceText == null" class="text-center">Service?</h3>
+            <h3 ng-if="ServiceText != null" class="text-center">{{ServiceText}}</h3>
+        </div>
+    </div>
+    <div class="row margin-top_40">
+        <div name="star1" class="star" ng-class="{'selected':formData.servicescore>0}" ng-click="setRating('servicescore', 1)"></div>
+        <div name="star2" class="star" ng-class="{'selected':formData.servicescore>1}" ng-click="setRating('servicescore', 2)"></div>
+        <div name="star3" class="star" ng-class="{'selected':formData.servicescore>2}" ng-click="setRating('servicescore', 3)"></div>
+        <div name="star4" class="star" ng-class="{'selected':formData.servicescore>3}" ng-click="setRating('servicescore', 4)"></div>
+        <div name="star5" class="star" ng-class="{'selected':formData.servicescore>4}" ng-click="setRating('servicescore', 5)"></div>
+    </div>
+
+</div>

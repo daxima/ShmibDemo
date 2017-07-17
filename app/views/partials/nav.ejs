@@ -1,0 +1,103 @@
+<div ng-controller="navCtrl">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <% if(typeof user.id == 'undefined'){ %>
+                    <ul class="nav navbar-nav">
+                        <li><a href="" data-toggle="modal" data-target="#signing" ng-click="selectModal('signin')">{{copy.landing.login}}</a></li>
+                        <li class="left-border"><a href="" data-toggle="modal" data-target="#signing" ng-click="selectModal('signUp')">{{copy.landing.signUp}}</a></li>
+
+
+                        <li class="left-border"><a href="#/auth/signup?redirect=property" data-toggle="modal" data-target="#signing" ng-click="selectModal('signUp')"><span class="nav-btn">میهمان بپذیر</span></a></li>
+                    </ul>
+
+                    <%} else {%>
+                        <ul class="nav navbar-nav">
+                            <li>
+
+
+
+                                <div class="" style="margin: 20px 20px 10px 10px">
+
+                                    <a id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="noBg pointer">
+                                        <span class="name-nav">{{copy.landing.hello}}  <%= user.firstName %></span>
+                                        <i class="material-icons" ng-show="!user.pictureUploaded">account_circle</i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-left profileDropdown" aria-labelledby="profileDropdown">
+                                        <i class="arrow-up"></i>
+                                        <li><a href="#">{{copy.internal.yourTrips}}</a></li>
+                                        <li role="separator" class="divider"></li>
+
+                                        <li><a href="#">{{copy.internal.profile}}</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/auth/logout">{{copy.internal.logout}}</a></li>
+
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <% if(user.hasProperty){ %>
+                                <li>
+                                    <div class="" style="margin: 20px 20px 10px 10px">
+
+                                        <a id="propertyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="noBg pointer">
+                                            <span class="name-nav">{{copy.internal.hosting}}</span>
+                                            <i class="material-icons">home</i>
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-left propertyDropdown" aria-labelledby="propertyDropdown">
+                                            <i class="arrow-up"></i>
+                                            <li><a href="/in#/sales">{{copy.internal.stats}}</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/in#/listings">{{copy.internal.yourListings}}</a></li>
+                                            <li role="separator" class="divider"></li>
+
+                                            <li><a href="/property">{{copy.internal.becomeHost}}</a></li>
+
+
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <% } %>
+                                    <% if(!user.hasProperty){ %>
+                                        <li class="left-border"><a href="/property"><span  class="nav-btn">{{copy.internal.becomeHost}}</span></a></li>
+                                        <% } %>
+                        </ul>
+                        <% } %>
+
+
+                            <a class="navbar-brand brand-color left-border" href="/" style="margin-top: -1px"><img ng-if="!landing" src="../img/tatilan_logo_v2.png" style="width: 30px; height: auto; margin-left: 10px;" class="pull-right"><img ng-if="landing" src="../img/tatilan_logo_white.png" style="width: 30px; height: auto; margin-left: 10px;" class="pull-right"><span style="font-size: 24px">تعطیلان</span></a>
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="جستجو">
+                                </div>
+
+                            </form>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Modal -->
+
+
+
+    <% include signing.ejs %>
+</div>

@@ -1,0 +1,48 @@
+<style>
+    .errorMsg {
+        position: absolute;
+        left: 0px;
+        top: 35px;
+    }
+
+</style>
+<div id="vw-signin-user" class="container-login" style="top:50%">
+    <div class="profile">
+        <h2 class="light-gray">Sign In</h2>
+        <div class="profile__form">
+            <div class="profile__fields">
+                <form name="SigninForm" id="SigninForm" autocomplete="off" novalidate>
+                    <div class="field">
+                        <input type="text" id="username" placeholder="Email" name="userName" class="input" ng-model="LoginUser.userName" ng-focus="ClrMsg()" ng-pattern="emailPattern" autocomplete="false" required/>
+                        <span name="msgUsername1" class="err-critical" ng-show="signinFormValid && SigninForm.userName.$error.required">
+							<span class="errorMsg">Email is required.</span>
+                        </span>
+                        <span name="msgUsername2" class="err-critical" ng-show="signinFormValid && SigninForm.userName.$error.pattern==true">
+							<span class="errorMsg">Email is not valid.</span>
+                        </span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="upassword" placeholder="Password" name="pwdHash" class="input" ng-model="LoginUser.pwdHash" ng-focus="ClrMsg()" autocomplete="false" required/>
+                        <div class="forgot-password blue"><a ng-click="$event.preventDefault();openPopUp()">Forgot Password?</a></div>
+
+                        <span name="msgPassword1" class="err-critical" ng-show="signinFormValid && SigninForm.pwdHash.$error.required">
+							<span class="errorMsg">Password is required.</span>
+                        </span>
+                    </div>
+                    <div name="msgPassword2" class="field" ng-show="resMessage">
+                        <span class="err-critical">{{errormessage}}</span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="profile__footer">
+                        <button class="btn" type="submit" ng-click="send(LoginUser.userName,LoginUser.pwdHash,SigninForm.$valid);">
+                            SIGN IN
+                            <span ng-show="spinner">
+                <i class="glyphicon glyphicon-refresh spinning"></i>
+            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

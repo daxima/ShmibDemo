@@ -1,0 +1,60 @@
+@brand: #F66C66;
+
+.white {
+	color: #ffffff;
+}
+.brand {
+	color: @brand;
+}
+
+.round-corner(@radius:2px) {
+	 -webkit-border-radius: @radius;
+    	-moz-border-radius: @radius;
+             border-radius: @radius;
+}
+
+.bggradient(@start:#F26C66, @end:#FB9084, @angle:top){
+
+	background: #f26c66; /* Old browsers */
+	background: -moz-linear-gradient(@angle, @start 0%, @end 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(@angle, @start 0%,@end 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #f26c66 0%,#fb9084 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f26c66', endColorstr='#fb9084',GradientType=0 ); /* IE6-9 */
+}
+
+.transition(@duration:500ms, @style:ease, @delay: 0 ) {
+    -webkit-transition: all @duration @style @delay;
+    -moz-transition: all @duration @style @delay;
+    -o-transition: all @duration @style @delay;
+    transition: all @duration @style @delay;
+}
+
+.full-page(){
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+@base: #f938ab;
+@primaryColor: #f66c66;
+
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+	background-color: @start;
+	background-image: -webkit-linear-gradient(@origin, @start, @stop);
+	background-image: -moz-linear-gradient(@origin, @start, @stop);
+	background-image: -o-linear-gradient(@origin, @start, @stop);
+	background-image: -ms-linear-gradient(@origin, @start, @stop);
+	background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.boxshadow (@string) {
+        -webkit-box-shadow: @string;
+    -moz-box-shadow: @string;
+    box-shadow: @string;
+}

@@ -1,0 +1,121 @@
+<div class="reportsWrapper" ng-controller="reportsCtrl">
+    <div class="reportsHeader">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="margin-0">Reports</h2>
+                <h4>All hours in {{currentMonth}} {{currentYear}}</h4>
+            </div>
+            <div class="col-sm-6">
+                <button name="monthButton" type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
+                    {{selectedItem}} <span class="caret"></span>
+                </button>
+                <ul name="monthList" class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li ng-repeat="a in monthRange"><a ng-click="dropboxitemselected(a)">{{a.text}} </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row top-margin-30">
+            <div class="col-sm-4 text-center">
+                <div name="currentMonthRatings" class="bigText">
+                    {{currentMonthRatings.length}}
+                </div>
+                <div class="smallText">
+                    Total Ratings received this month
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div name="ratingPercentNotFive" class="bigTextWrapper">
+                    <span class="bigText">{{ratingPercentNotFive}}</span> <sup class="percentage">%</sup>
+                </div>
+                <div class="smallText">
+                    of the ratings were not five stars. Mostly on your {{ratingType}}.
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div name="ratingVariationPercent" class="bigTextWrapper">
+                    <sup class="percentage"><span ng-if = "ratingVariationpercent > 0" class="glyphicon glyphicon-arrow-up greenArrow"></span>
+                    <span ng-if = "ratingVariationpercent < 0" class="glyphicon glyphicon-arrow-down greenArrow"></span></sup> <span class="bigText">{{ratingVariationpercent}}</span> <sup class="percentage">%</sup>
+                </div>
+
+                <div ng-if="ratingVariationpercent >= 0" class="smallText">Improved rating compare to last month</div>
+                <div ng-if="ratingVariationpercent < 0" class="smallText">Decreased rating compare to last month</div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="foodRatingReport">
+        <div class="col-sm-4 text-center">
+            <div class="reportImageWrapper top-margin-20">
+                <img src="../images/shmib_icon_plain.png">
+            </div>
+            <div class="starsWrapper top-margin-30">
+                <span ng-repeat="fr in foodRating">
+                    <span class= {{fr.star}}></span>
+                </span>
+            </div>
+            <div class="smallText top-margin-10">
+                <div>overall ratings</div>
+                <div>{{foodQuestion}}</div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="chartHeader">
+                <h5><input type="checkbox" id="exclude5star1" name="exclude5star1" ng-model="foodChartexclude5star" ng-change="getReviewScore()"> Exclude five stars <span class="glyphicon glyphicon-question-sign"></span></h5>
+            </div>
+            <div class="chartWrapper">
+                <canvas tc-chartjs-bar chart-data="foodBarGraph" chart-options="barChartOptions" width="620" height="220" id="barchart-1"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="serviceRatingReport">
+        <div class="col-sm-4 text-center">
+            <div class="reportImageWrapper top-margin-20">
+                <img src="../images/shmib_icon_plain.png">
+            </div>
+            <div class="starsWrapper top-margin-30">
+                <span ng-repeat="sr in serviceRating">
+                    <span class= {{sr.star}}></span>
+                </span>
+
+            </div>
+            <div class="smallText top-margin-10">
+                <div>overall ratings</div>
+                <div>{{serviceQuestion}}</div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="chartHeader">
+                <h5><input type="checkbox" id="exclude5star1" name="exclude5star1" ng-model="serviceChartexclude5star" ng-change="getReviewScore()"> Exclude five stars <span class="glyphicon glyphicon-question-sign"></span></h5>
+            </div>
+            <div class="chartWrapper">
+                <canvas tc-chartjs-bar chart-data="serviceBarGraph" chart-options="barChartOptions" width="620" height="220" id="barchart-3"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="cleannessRatingReport">
+        <div class="col-sm-4 text-center">
+            <div class="reportImageWrapper top-margin-20">
+                <img src="../images/shmib_icon_plain.png">
+            </div>
+            <div class="starsWrapper top-margin-30">
+                <span ng-repeat="cr in cleanRating">
+                <span class= {{cr.star}}></span>
+                </span>
+
+            </div>
+            <div class="smallText top-margin-10">
+                <div>overall ratings</div>
+                <div>{{cleanQuestion}} </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="chartHeader">
+                <h5><input type="checkbox" id="exclude5star1" name="exclude5star1" ng-model="cleanChartexclude5star" ng-change="getReviewScore()"> Exclude five stars <span class="glyphicon glyphicon-question-sign"></span></h5>
+            </div>
+            <div class="chartWrapper">
+                <canvas tc-chartjs-bar chart-data="cleanBarGraph" chart-options="barChartOptions" width="620" height="220" id="barchart-2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

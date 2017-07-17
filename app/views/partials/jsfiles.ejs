@@ -1,0 +1,36 @@
+<% // javascript libraries %>
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+        function i(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",y=u.createElement(o),r,f;y.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(y);try{t.cookie=u.cookie}catch(p){}for(t.queue=[],t.version="1.0",r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)i("track"+r.pop());return i("set"+s),i("clear"+s),i(h+a),i(c+a),i(h+v),i(c+v),i("flush"),config.disableExceptionTracking||(r="onerror",i("_"+r),f=e[r],e[r]=function(config,i,u,e,o){var s=f&&f(config,i,u,e,o);return s!==!0&&t["_"+r](config,i,u,e,o),s}),t
+        }({
+            instrumentationKey: '<%- azure.instrumentationKey %>'
+        });
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.js"></script>
+    <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/lib/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>-->
+    <script type="text/javascript" src="/lib/Chart.js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="/lib/tc-angular-chartjs/dist/tc-angular-chartjs.js"></script>
+    <script type="text/javascript" src="/lib/angular-ui-mask/dist/mask.min.js"></script>
+    <script type="text/javascript" src="/lib/ng-lodash/build/ng-lodash.min.js"></script>
+    <script type="text/javascript" src="/lib/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="/lib/ng-file-upload/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="/lib/ng-autocomplete-validation/dist/ngAutocomplete.min.js"></script>
+    <script type="text/javascript" src="/lib/ng-device-detector/ng-device-detector.min.js"></script>
+    <script type="text/javascript" src="/lib/re-tree/re-tree.min.js"></script>
+    <% // general project javascript files %>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/factories/bizGoogleSelection.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+    </script>

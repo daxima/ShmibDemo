@@ -1,0 +1,29 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/blue.css">
+    <link type="text/css" rel="stylesheet" media="all" href="/css/authentication.css">
+    </head>
+
+    <body ng-app="shmib" ng-controller="onboarding" class="signup primary-bg-blue">
+
+        <div class="mainContainer" ui-view>
+
+        </div>
+
+        <script>
+            var user = <%- JSON.stringify(user) %>;
+            var version = <%- JSON.stringify(version) %>;
+
+        </script>
+        <% include partials/jsfiles.ejs%>
+            <% // include file specific js files here %>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBngPfbXpbU2FAIsFqY0bnws_6hbNslhAw&libraries=places"></script>
+                <script type="text/javascript" src="/js/controllers/businessRegistration.client.controller.js"></script>
+                <script type="text/javascript" src="/js/routes/signup.routes.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                <script type="text/javascript" src="/js/directives/modal.control.directive.js"></script>
+                <script type="text/javascript" src="/js/controllers/signup.client.controller.js"></script>
+                <script type="text/javascript" src="/js/controllers/terms.modal.client.controller.js"></script>
+    </body>
+
+
+    </html>

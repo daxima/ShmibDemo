@@ -1,0 +1,4 @@
+Hello Shmibber,<br><br>
+You have submitted a new Shmib for {{companyname}} on {{currentday}}.<br><br>
+Please click on the link below to view the details:<br><br>
+<a href="{{pageUrl}}" target="_blank" style="text-decoration:none"> <span>{{pageLink}}</span> </a> <br> <br>

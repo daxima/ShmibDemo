@@ -1,0 +1,42 @@
+<div ui-view class="reviewDetailView"></div>
+<div id="couponHeader" class="reviewsWrapper" ng-controller="couponsCtrl">
+    <div class="reviewsHeader">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2 class="margin-0">Coupons</h2>
+            </div>
+            <div class="col-sm-8">
+                <div name="couponAdd" class = "btn-group pull-right">
+                     <a  ui-sref="coupons.add()" class="btn btn-default">Add </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviewListing">
+        <div class="row" ng-repeat="c in Coupons">
+            <div class="col-sm-1">
+                   	 {{c.id}}
+             </div>
+            <div class="col-sm-3">			 
+					{{c.couponHeader }}
+            </div>
+            <div class="col-sm-1">				 
+					{{c.couponCode }}		 
+            </div>
+            <div class="col-sm-3">                 				 
+					{{c.couponShortDesc }}				
+            </div>
+            
+            <div class="col-sm-1">                 				 
+					{{c.validityDays }}			 
+            </div>
+             
+ 
+            <div class="col-sm-3 text-center">
+                <a ui-sref="coupons.details({id: c.id})" class="showDetails">Edit </a>
+            </div>
+        </div>
+ 
+  
+    </div>
+</div>

@@ -1,0 +1,90 @@
+.red-tooltip + .tooltip.top > .tooltip-inner {
+  background-color: #f00;
+}
+.red-tooltip + .tooltip.top > .tooltip-arrow {
+  border-top-color: #f00;
+}
+.red-tooltip + .tooltip.bottom > .tooltip-inner {
+  background-color: #f00;
+}
+.red-tooltip + .tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: #f00;
+}
+.red-tooltip + .tooltip.left > .tooltip-inner {
+  background-color: #f00;
+}
+.red-tooltip + .tooltip.left > .tooltip-arrow {
+  border-left-color: #f00;
+}
+.red-tooltip + .tooltip.right > .tooltip-inner {
+  background-color: #f00;
+}
+.red-tooltip + .tooltip.right > .tooltip-arrow {
+  border-right-color: #f00;
+}
+
+.drop-box .tooltip {
+    top: -70px !important;
+    left: 5px !important;
+}
+
+.form-control {
+    font-weight: normal;
+    background-color: transparent;
+    border: 1px solid #979797;
+    color: #636463;
+    transition: all 0.2s ease-in;
+    border-radius: 0;
+    height: 41px;
+}
+.form-control:focus {
+    outline: 0;
+    border-color: #979797;
+}
+
+
+.input::-ms-clear, .form-control::-ms-clear, .trans::-ms-clear,
+.input::-ms-reveal, .form-control::-ms-reveal, .trans::-ms-reveal{
+    display: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: lightgrey !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: lightgrey !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: lightgrey !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: lightgrey !important;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+.modal-dialog{
+    top: 80px;
+}
+
+
+@media screen and (max-width: 767px) {
+    
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #fff;
+    }
+    
+    .navbar-default .navbar-toggle .icon-bar{
+        background-color: #fff;
+    }
+
+}
+
+@media screen and (max-width: 414px) {
+    .drop-box .tooltip {
+        top: -105px !important;
+        left: 0px !important;
+    }
+}

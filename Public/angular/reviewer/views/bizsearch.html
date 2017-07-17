@@ -1,0 +1,84 @@
+<style>
+    .middlepage {
+        height: 400px;
+        width: 400px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -200px;
+        color: gray;
+        font-size: 21px;
+    }
+    .listCompanyName{
+        color:#666;
+        font-size:17px;
+        font-weight:bold;
+        margin:0 0 0px !important;
+    }
+    .listAddress{
+        color:#666;
+        font-size:12px;
+        margin:0 0 0px !important;
+    }
+    .priceLevel{
+        padding:0px 0px !important;
+        float:none !important;
+    }
+</style>
+
+<div id="ratenum" class="container-fluid text-center">
+    <div class="row">
+        <div class="col-md-12 titlebox text-left full-width">
+
+            <div style="position:relative;">
+                <input name="bizsearch" type="text" placeholder="Type business name" autocomplete="off" ng-model="model.bizSearch" uib-typeahead="business as business.companyname for business in   Search($viewValue) | filter:$viewValue" typeahead-min-length="2">
+                <a class="close_custom" style="position: absolute; top: 8px; right: 10px;" ng-click="$event.preventDefault();clearSearchText()" ng-show="model.bizSearch != ''"></a>
+            </div>
+
+        </div>
+     </div>
+
+    <div ng-if="model.bizList.company.length > 0" class="row rating-box" ng-repeat="b in model.bizList.company">
+        <div class="listRowWrapper" ng-click="getUserReviewPage(b.urlName)">
+            <div class="col-lg-6 col-md-6 col-xs-6 text-left pull-left">
+                <p class="listCompanyName">{{b.name}}</p>
+                <span class="listAddress">{{b.streetAddress + "," + b.city + ", " + b.state + ", " + b.zip}}</span>
+            </div>
+            <!--<div class="col-lg-6 col-md-6 col-xs-6 pull-right text-right">
+                <ul class="list-inline rating-star-noclick" style="margin-bottom:0px !important;margin-top:5px !important;">
+                    <li>
+                        <label class="meal meal-1 priceLevel" ng-class="{mealcolor:b.priceLevel==1 ||b.priceLevel >1}" for="meal-1" ></label>
+                        <label class="meal meal-2 priceLevel" ng-class="{mealcolor:b.priceLevel==2 ||b.priceLevel >2}" for="meal-2"></label>
+                        <label class="meal meal-3 priceLevel" ng-class="{mealcolor:b.priceLevel==3 ||b.priceLevel >3}" for="meal-3"></label>
+                        <label class="meal meal-4 priceLevel" ng-class="{mealcolor:b.priceLevel==4}" for="meal-4"></label>
+                    </li>
+                </ul>
+            </div>-->
+		</div>
+    </div>
+     <div class="row middlepage" ng-if="model.bizList.company.length == 0">
+         <div class="container-fluid">
+             <span>No results found!</span>
+         </div>
+     </div>
+    <div class="row middlepage" ng-if="loaded != true">
+        <div class="container-fluid">
+            <img src="../images/loader.gif" />
+        </div>
+    </div>
+
+    <div ng-if="user" class="row footer">
+        <ul class="bottom-tab">
+            <li ng-click="getReviewPage()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-star-empty"></span></a></li>
+            <li ng-click="getBizSearchPage()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-plus"></span></a></li>
+            <li ng-click="getMyProfile()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-user"></span></a></li>
+        </ul>
+    </div>
+    <div ng-if="!user" class="row footer">
+        <ul class="bottom-tab">
+            <li ng-click="getLoginPage()" style="width: 100%"><a style="text-decoration:none;" href=""><b>Shmibed before?&nbsp;&nbsp;&nbsp;&nbsp;Sign In</b></a></li>
+        </ul>
+    </div>
+
+</div>
+<div growl center></div>

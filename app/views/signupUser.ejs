@@ -1,0 +1,41 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/authentication.css">
+    </head>
+
+    <body ng-app="shmib" ng-controller="onboarding" class="signup primary-bg">
+
+        <div class="mainContainer">
+            <div class="topbar">
+                <div class="col-xs-5 col-sm-4">
+                    <div id="company-logo">
+                        <a href="/auth/login"><img src="/images/logo.png" alt="Shmib" /></a>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-sm-8">
+                    <div class="signupMessage">
+                        <span ng-bind="signupUser"></span> <span ng-if="signupUser==null">Already a member? </span> <a ng-if="signupUser==null" href="/auth/login">Sign In</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div ui-view class="signup-parent"></div>
+            </div>
+            <div class="bottom-footer"><a ng-click="$event.preventDefault();showTermsPopUp()">Terms of Use &amp; Privacy Policy</a>
+                <%- version %>
+            </div>
+        </div>
+
+
+        <% include partials/jsfiles.ejs%>
+            <% // include file specific js files here %>
+
+                <script type="text/javascript" src="/js/routes/signupUser.routes.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                <script type="text/javascript" src="/js/directives/modal.control.directive.js"></script>
+                <script type="text/javascript" src="/js/controllers/signupUser.client.controller.js"></script>
+                <script type="text/javascript" src="/js/controllers/businessRegistration.client.controller.js"></script>
+                <script type="text/javascript" src="/js/controllers/terms.modal.client.controller.js"></script>
+    </body>
+
+
+    </html>

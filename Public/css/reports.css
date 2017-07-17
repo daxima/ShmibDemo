@@ -1,0 +1,141 @@
+.white {
+  color: #ffffff;
+}
+.brand {
+  color: #f66c66;
+}
+.primary-bg {
+  background: #f66c66 !important;
+}
+/* Reports Section */
+.reportsWrapper {
+  width: 1000px;
+  margin: 20px auto;
+  color: #ffffff;
+}
+.reportsWrapper h2,
+.reportsWrapper h3 {
+  color: #ffffff;
+}
+.reportsWrapper .bigText {
+  font-size: 60px;
+}
+.reportsWrapper span,
+.reportsWrapper sup {
+  font-size: 18px;
+}
+.reportsWrapper sup {
+  top: -1.5em;
+}
+.reportsWrapper .reportImageWrapper img {
+  max-height: 100px;
+}
+.reportsHeader,
+.foodRatingReport,
+.cleannessRatingReport,
+.serviceRatingReport {
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+}
+.reportsHeader {
+  height: 320px;
+  background-color: #716d61;
+}
+.reportsHeader .greenArrow {
+  color: #a4c776;
+}
+.opacity_half {
+  opacity: 0.5;
+}
+.reportsHeader .btn-default {
+  border-color: #676456;
+}
+
+.monthDropdown{
+	padding-left: 0;
+	padding-right: 0;
+}
+.foodRatingReport {
+  background-color: #32b3ae;
+  background-image: -webkit-linear-gradient(left, #32b3ae, #319598);
+  background-image: -moz-linear-gradient(left, #32b3ae, #319598);
+  background-image: -o-linear-gradient(left, #32b3ae, #319598);
+  background-image: -ms-linear-gradient(left, #32b3ae, #319598);
+  background-image: linear-gradient(left, #32b3ae, #319598);
+}
+.serviceRatingReport {
+  background-color: #39c2ad;
+  background-image: -webkit-linear-gradient(left, #39c2ad, #35a175);
+  background-image: -moz-linear-gradient(left, #39c2ad, #35a175);
+  background-image: -o-linear-gradient(left, #39c2ad, #35a175);
+  background-image: -ms-linear-gradient(left, #39c2ad, #35a175);
+  background-image: linear-gradient(left, #39c2ad, #35a175);
+}
+.cleannessRatingReport {
+  background-color: #4696b6;
+  background-image: -webkit-linear-gradient(left, #4696b6, #5889ce);
+  background-image: -moz-linear-gradient(left, #4696b6, #5889ce);
+  background-image: -o-linear-gradient(left, #4696b6, #5889ce);
+  background-image: -ms-linear-gradient(left, #4696b6, #5889ce);
+  background-image: linear-gradient(left, #4696b6, #5889ce);
+}
+.reportsHeader .btn-default {
+  /*background-color: #706d61;
+  background-image: -webkit-linear-gradient(top, #706d61, #676458);
+  background-image: -moz-linear-gradient(top, #706d61, #676458);
+  background-image: -o-linear-gradient(top, #706d61, #676458);
+  background-image: -ms-linear-gradient(top, #706d61, #676458);
+  background-image: linear-gradient(top, #706d61, #676458);*/
+}
+
+
+    
+@media screen and (max-width: 991px) {
+    .reportsWrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .reportsWrapper {
+        width: 100%;
+    }
+    
+    .reportsHeader, .foodRatingReport, .cleannessRatingReport, .serviceRatingReport{
+        height: auto;
+    }
+    
+}
+
+@media screen and (max-width: 550px) {
+    .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    #topBar .navbar{
+        margin-bottom: 0px;
+    }
+    #topBar .navbar-default .navbar-nav > li > a {
+        height: 40px;
+        line-height: 10px;
+    }
+
+    .reportsWrapper {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .reportsHeader .btn{
+        padding: 6px 11px;
+    }
+    .reportsHeader .monthDropdown {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .reportsHeader .monthDropdown .dropdown-menu-left {
+        left: 15px !important;
+    }
+}

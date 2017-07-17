@@ -1,0 +1,41 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/blue.css">
+    <link type="text/css" rel="stylesheet" media="all" href="/css/profile.css">
+    <% // include file specific css files here %>
+
+        </head>
+
+        <body ng-app="shmib" class="">
+
+            <div class="mainContainer">
+                <% include partials/topbar.ejs %>
+                    <div class="container">
+                        <div ui-view></div>
+                    </div>
+
+            </div>
+
+            <script>
+                window.scrollTo(0, 1);
+
+                var user = <%- JSON.stringify(user) %>;
+                var company = <%- JSON.stringify(company) %>;
+                var customLabel = <%- JSON.stringify(customLabel) %>;
+                var siteProtocol = <%- JSON.stringify(siteProtocol) %>;
+
+            </script>
+
+            <% include partials/jsfiles.ejs%>
+                <% // include file specific js files here %>
+                    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDa03MjNNX1eMD8XWmf7pW83hcebYpKV0Q&libraries=places"></script>-->
+
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBngPfbXpbU2FAIsFqY0bnws_6hbNslhAw&libraries=places"></script>
+
+                    <script type="text/javascript" src="/js/routes/profile.routes.js"></script>
+                    <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                    <script type="text/javascript" src="/js/controllers/topbar.client.controller.js"></script>
+                    <script type="text/javascript" src="/js/controllers/profile.client.controller.js"></script>
+                    <script type="text/javascript" src="/js/controllers/alert.modal.client.controller.js"></script>
+        </body>
+
+        </html>

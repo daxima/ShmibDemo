@@ -1,0 +1,31 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/blue.css">
+    <link type="text/css" rel="stylesheet" media="all" href="/css/reports.css">
+    </head>
+
+    <body ng-app="shmib" class="">
+
+        <div class="mainContainer">
+            <% include partials/topbar.ejs %>
+                <div class="container">
+                    <div ui-view></div>
+                </div>
+
+        </div>
+
+        <script>
+            var user = <%- JSON.stringify(user) %>;
+            var companyId = <%- JSON.stringify(companyId) %>;
+            var bizType = <%- JSON.stringify(bizType) %>;
+
+        </script>
+        <% include partials/jsfiles.ejs%>
+
+            <script type="text/javascript" src="/js/routes/reports.routes.js"></script>
+            <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+            <script type="text/javascript" src="/js/controllers/topbar.client.controller.js"></script>
+            <script type="text/javascript" src="/js/controllers/reports.client.controller.js"></script>
+            <script type="text/javascript" src="/js/controllers/alert.modal.client.controller.js"></script>
+    </body>
+
+    </html>

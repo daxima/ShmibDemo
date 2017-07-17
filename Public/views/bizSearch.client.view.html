@@ -1,0 +1,124 @@
+<form id="" name="bizSearchForm">
+    <style>
+        .divRestaurantName {
+            position: relative;
+        }
+        
+        .close_custom {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+        }
+        
+        .pCompanyName {
+            color: #666;
+            font-size: 17px;
+            font-weight: bold;
+            margin: 0 0 0px !important;
+        }
+        
+        .bddress {
+            color: #666;
+            font-size: 12px;
+            margin: 0 0 0px !important;
+        }
+        
+        .list-inline {
+            margin-bottom: 0px !important;
+            margin-top: 5px !important;
+        }
+        
+        .mealcolor {
+            padding: 0px 0px !important;
+            float: none !important;
+        }
+        
+        .spanNoResult {
+            color: gray;
+            font-size: 21px;
+        }
+        
+        .glyphicon-user,
+        .glyphicon-plus {
+            text-decoration: none;
+        }
+        
+        .ShmibedBefore {
+            width: 100% !important;
+        }
+        
+        .brandLogo img {
+            width: 42px;
+        }
+
+    </style>
+    <div id="bizSearchDiv" name="bizSearchDiv">
+        <div class="row">
+            <div class="col-md-12 titlebox text-left full-width">
+
+                <div class="col-sm-1 brandLogo text-center">
+                    <img src="images/shmib_icon_plain.png" />
+                </div>
+                <div class="col-sm-11" style="position:relative;">
+                    <div class="col-sm-11" style="position:relative;">
+                        <input type="text" class="padding-left-46" name="city" style="padding-left:30px;" ng-model="city" placeholder="Current Location" uib-typeahead="item as item.cityName for item in getCityName($viewValue)| limitTo:8" typeahead-min-length="3" typeahead-on-select="onSelectCity($item)" typeahead-editable="false" typeahead-require-selection="true" typeahead-display-popup-on-click="true" data-ng-disabled="(geoLng + geoLat) == 0">
+                        <span class="glyphicon glyphicon-map-marker" style="position: absolute; top: 14px; left: 22px; color:#ccc;"></span>
+                        <a class="glyphicon glyphicon-screenshot" uib-tooltip="Current Location" tooltip-placement="bottom" style="position: absolute; top: 14px; right: 28px;" ng-click="$event.preventDefault();clearCityText()" data-ng-hide="(geoLng + geoLat) == 0"></a>
+                    </div>
+
+                    <div class="col-sm-11" style="position:relative;margin-top:10px;display:none;">
+                        <input name="bizsearch" class="padding-left-46" type="text" style="padding-left:30px;" placeholder="Type business name" autocomplete="off" ng-model="model.bizSearch" uib-typeahead="business as business.companyname for business in   GoogleSearch($viewValue) | filter:$viewValue" typeahead-template-url="views/templates/typeahead.listing-tpl.html" typeahead-loading="loadingStages" typeahead-no-results="noResults" typeahead-on-select="selectbusinessList($item);" typeahead-min-length="2" typeahead-wait-ms="500" data-ng-disabled="(geoLng + geoLat) == 0">
+                        <span class="glyphicon glyphicon-search" style="position: absolute; top: 14px; left: 22px; color:#ccc;"></span>
+                        <a class="close_custom2" style="position: absolute; top: 11px; right: 28px;" ng-click="$event.preventDefault();clearSearchText()" ng-show="btnClearText"></a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!--
+    <form action="/location">
+      <input type="hidden" />
+    </form> -->
+
+        <div name="bizSearchDiv" ng-if="businessList.length > 0 && (geoLng + geoLat) != 0" class="row rating-box" ng-repeat="b in businessList" ng-click="getUserReviewPage(b)">
+            <div class="listRowWrapper">
+                <div class="col-sm-12 text-left pull-left">
+                    <p name="companyName" style="color:#666;font-size:17px;font-weight:bold;margin:0 0 0px !important;">{{b.companyname}}</p>
+                    <span style="color:#666;font-size:12px;margin:0 0 0px !important;">{{b.address}}</span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="(geoLng + geoLat) == 0" class="row middlepage" ng-if="resMessage">
+            <div class="container-fluid">
+                <span class="spanNoResult">Location services needs to be enabled to search a business</span>
+            </div>
+        </div>
+
+        <div ng-if="(businessList.length == 0) && ((geoLng + geoLat) !== 0)" class="row middlepage" ng-if="resMessage">
+            <div class="container-fluid">
+                <span class="spanNoResult">No results found!</span>
+            </div>
+        </div>
+        <div class="row searchLoader" ng-if="showLoader">
+            <div class="container-fluid">
+                <img src="images/loader.gif" height="80" />
+            </div>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+
+</form>
+<div ng-if="user" class="row footer">
+    <ul class="bottom-tab">
+        <li ng-click="getReviewPage()"><a href=""><span class="glyphicon glyphicon-star-empty"></span><br/>Shmibs</a></li>
+        <li ng-click="getBizSearchPage()"><a href=""><span class="glyphicon glyphicon-plus"></span><br/>New</a></li>
+        <li ng-click="getMyProfile()"><a href=""><span class="glyphicon glyphicon-user"></span><br/>Profile</a></li>
+    </ul>
+</div>
+<div ng-if="!user" class="row footer">
+    <ul class="bottom-tab">
+        <li class="ShmibedBefore"><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Shmibed before?&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" ng-click="getLoginPage()">Sign In</button></a></li>
+    </ul>
+</div>

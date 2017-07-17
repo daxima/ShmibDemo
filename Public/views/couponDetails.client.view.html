@@ -1,0 +1,86 @@
+<div class="reviewDetailsOverlay">
+    <a href="/home/coupons" class="close"></a>
+    <div class="reviewDetailsWrapper">
+        <div class="reviewDetails">
+            <div class="row">
+                <form name="CouponForm" id="CouponForm" class="form-horizontal" autocomplete="off" novalidate>
+                    <div class="row">
+                        <h3>Coupon details - {{Coupon.couponHeader}}</h3>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="couponCode" class="col-sm-2 control-label">coupon Code:</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="couponCode" class="input" ng-model="Coupon.couponCode" name="couponCode" style="display: inline-block;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couponType" class="col-sm-2 control-label">coupon Type:</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="couponType" class="input" ng-model="Coupon.couponType" name="couponType" style="display: inline-block;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couponShortDesc" class="col-sm-2 control-label"> ShortDesc:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="couponShortDesc" class="input" ng-model="Coupon.couponShortDesc" name="couponShortDesc" style="display: inline-block;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couponLongDesc" class="col-sm-2 control-label"> LongDesc:</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="couponLongDesc" class="input" ng-model="Coupon.couponLongDesc" name="couponLongDesc" style="display: inline-block;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="validityDays" class="col-sm-2 control-label"> validityDays:</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="validityDays" class="input" ng-model="Coupon.validityDays" name="validityDays" style="display: inline-block;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timesUsed" class="col-sm-2 control-label"> timesUsed:</label>
+                            <div class="col-sm-5">
+                                {{Coupon.timesUsed}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companyId" class="col-sm-2 control-label"> companyId:</label>
+                            <div class="col-sm-5">
+                                {{Coupon.companyId}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="isActive" class="col-sm-2 control-label"> isActive:</label>
+                            <div class="col-sm-5">
+                                <input type="checkbox" id="isActive" name="isActive" ng-model="Coupon.isActive" />
+                            </div>
+                        </div>
+
+                    </div>
+ 
+                    <div class="col-sm-12 text-center">
+                        <div class="field" ng-show="resMessage">
+                            <span ng-class="{'succ-message': isSuccess, 'text-success': !isSuccess}">{{resMessageContent}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-offset-5 col-sm-5">
+                                <button type="submit" class="btn primary-bg" ng-click="UpdateCoupon(CouponForm.$valid)"> Save Changes</button>                 
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

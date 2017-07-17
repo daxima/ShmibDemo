@@ -1,0 +1,7 @@
+{
+    "staging": {
+        "host": "10.1.10.7",
+        "username": "shmib",
+        "password": "xxxxxxxxxxxxxx"
+    }
+}

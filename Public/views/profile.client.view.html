@@ -1,0 +1,359 @@
+<style>
+    .errorMsg {
+        left: 15px;
+        position: absolute;
+        top: 40px;
+    }
+    
+    .errorMsgProfileImage {
+        left: 15px;
+        position: absolute;
+        top: 118px;
+    }
+    
+    .errorMsgPromotionImage {
+        left: 15px;
+        position: absolute;
+        top: 200px;
+    }
+    
+    .errorImg {
+        position: absolute;
+        right: 16px;
+        top: 1px;
+    }
+    
+    .emailPatttern {
+        position: absolute;
+        top: 1px;
+        right: 17px;
+    }
+    
+    .rType {
+        line-height: 4rem;
+        height: 40px;
+    }
+    
+    .grayPhoneNumber {
+        font-weight: normal;
+        margin-top: 1px;
+        font-size: 11px !important;
+        color: #636463;
+        font-style: italic;
+        font-weight: normal !important;
+    }
+    
+    .readonly {
+        background-color: #DEDEDE !important;
+    }
+    
+    .textarea {
+        resize: none;
+    }
+
+</style>
+<div id="profile" class="profileWrapper" ng-controller="profileCtrl">
+    <div class="profileHeader bizProfile">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="margin-0">Profile</h2>
+
+            </div>
+            <div class="col-sm-12">
+                <h5>Shmib address: {{reviewLink}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="profileDetails">
+        <form name="ProfileForm" id="ProfileForm" class="form-horizontal" autocomplete="off" novalidate>
+            <div class="row">
+                <h3>Business Info</h3>
+            </div>
+            <div class="row">
+                <div class="form-group profilePic">
+                    <label class="col-sm-2 control-label">Profile Picture:</label>
+                    <div class="col-sm-10">
+                        <div style="background-image: url({{profileImage}})" class="drop-box" name="promoImage" ngf-drop ngf-select="upload($file, $invalidFile, true)" ngf-drag-over-class="'dragover'" accept="image/*" ngf-capture="camera" ngf-resize="{width: 200, height: 200}" ngf-resize-if="$width > 200 || $height > 200" ng-mouseenter="isEditImage=true" ng-mouseleave="isEditImage=false" ng-init="isEditImage=false" ng-model="profileImageForDB">
+
+                            <a class="btn-edit-image" ng-show="isEditImage" ng-click="$event.preventDefault();">Edit</a>
+                        </div>
+
+                        <span class="signup-loading err-critical" ng-show="isUnSupportedType">
+                            <span class="errorMsgProfileImage">Unsupported file format!!! (Only GIF, JPG, JPEG and PNG are allowed) </span>
+                        </span>
+
+                        <span class="signup-loading err-critical" ngf-no-file-drop>
+                            <span class="errorMsgProfileImage">File Drag/Drop is not supported for this browser</span>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label for="restaurantname" class="col-sm-2 control-label">Business Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="restaurantname" id="restaurantname" class="form-control" placeholder="Business Name" ng-model="business.restaurantName" required readonly/>
+                        <span class="signup-loading err-critical" ng-show="signupFormValid && ProfileForm.restaurantname.$error.required">
+                            <span class="errorMsg">Business name is required.</span>
+                        <img src="images/failSmallBlue.gif?random={{randomNum}}" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Business name is required!" />
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cellnumber" class="col-sm-2 control-label">Phone Number:</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" ng-model="business.phoneNumber" style="display: inline-block;" ui-mask="(999) 999 9999" ui-options="{clearOnBlur: false}" ng-blur="checkPhoneNumber(business.phoneNumber,business.phoneNumber.length)" ng-focus="resetPhoneNumber()" />
+
+
+                        <div ng-hide="business.phoneNumber.length===0 ">
+                            <!--phone number validations start-->
+                            <img src="images/failSmallBlue.gif?random={{randomNum.phoneNumber}}" ng-if="phoneNumberDuplicate" tooltip-placement="top" uib-tooltip="Phone number already in use." class="red-tooltip signup-loading errorImg" />
+
+                            <img src="images/failSmallBlue.gif?random={{randomNum.phoneNumber}}" tooltip-placement="left" uib-tooltip="Phone number must be 10 digits!" class="red-tooltip signup-loading errorImg" ng-if="phoneNumberFailed" />
+                            <span class="signup-loading err-critical" ng-show="phoneNumberFailed==true">
+                                <span class="errorMsg">Phone number must be 10 digits.</span>
+                            </span>
+
+                            <span class="signup-loading err-critical" ng-show="phoneNumberDuplicate==true">
+                                <span class="errorMsg">Phone number already in use.</span>
+                            </span>
+
+                            <!--phone number validations end-->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email:</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" id="email" class="form-control" placeholder="Email" ng-model="business.email" name="email" ng-pattern="emailPattern" ng-blur="checkEmail(business.email)" ng-focus="resetEmail()" required />
+
+                        <img ng-hide="signupForm.emailAddress.$error.pattern==true " class="signup-loading emailPatttern" ng-if="emailAccepted" src="images/spinnerCheckSmall.gif?random={{randomNum.email}}" />
+                        <div class=" pUsers text-left padding20">
+                            <span class="signup-loading err-critical" ng-show="duplicateEmail==true">
+									  <img src="images/failSmallBlue.gif?random={{randomNum}}" tooltip-placement="left" class="red-tooltip errorImg" uib-tooltip="Email is already in use!"  />
+                            </span>
+                            <span class="signup-loading err-critical" ng-show="duplicateEmail==true">
+                                <span class="errorMsg">Email is already in use.</span>
+                            </span>
+                            <span class="signup-loading err-critical" ng-show="ProfileForm.email.$error.pattern==true">
+                                <span class="errorMsg">Email is not valid.</span>
+                            </span>
+                        </div>
+
+                        <span class="signup-loading err-critical" ng-show="ProfileForm.email.$error.pattern">
+								<img src="images/failSmallBlue.gif?random={{randomNum}}"
+									 tooltip-placement="left" uib-tooltip="Email is not valid!" class="red-tooltip errorImg" />
+						    </span>
+
+                        <span class="signup-loading err-critical" ng-show="signupFormValid && (ProfileForm.email.$error.required)">
+								 <span class="errorMsg">Email is required.</span>
+                        <img src="images/failSmallBlue.gif?random={{randomNum}}" tooltip-placement="left" uib-tooltip="Email is required!" class="red-tooltip errorImg" />
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Business Type:</label>
+                    <div class="col-sm-10">
+                        <select id="restauranttype" class="form-control rType" ng-model="business.restype" name="restauranttype" ng-options='option1.id as option1.refCode for option1 in restype' ng-init="business.restype=restype[0]" required>
+                        </select>
+                        <span class="errMessage err-critical" ng-show="signupFormValid &&  ProfileForm.restauranttype.$error.required">
+							  <span class="errorMsg">Select Business Type</span>
+                        </span>
+                    </div>
+                </div>
+                <div ng-if="business.restype === '8'" class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Food Type:</label>
+                    <div class="col-sm-10">
+                        <select id="foodtype" class="form-control rType" ng-model="business.foodtype" name="foodtype" ng-options='option2.id as option2.refCode for option2 in foodtype'>
+                        </select>
+
+                        <span class="errMessage err-critical" ng-show="signupFormValid &&  ProfileForm.foodtype.$error.required">
+							<span class="errorMsg">Select Food Type</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Administrator</h3>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label">Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" id="firstName " placeholder="First Name" class="form-control" ng-model="signup.firstName" name="firstName" required />
+                        <span class="signup-loading err-critical" ng-show="signupFormValid && ProfileForm.firstName.$error.required">
+							 <span class="errorMsg">First name is required.</span>
+                        <img src="images/failSmallBlue.gif?random={{randomNum}}" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="First name is required!" />
+                        </span>
+                    </div>
+                    <br class="clearfix visible-xs-block" />
+                    <div class="col-sm-5">
+                        <input type="text" id="lastName " placeholder="Last Name" class="form-control" ng-model="signup.lastName" name="lastName" required/>
+                        <span class="signup-loading err-critical" ng-show="signupFormValid && ProfileForm.lastName.$error.required">
+							<span class="errorMsg">Last name is required.</span>
+                        <img src="images/failSmallBlue.gif?random={{randomNum}}" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Last name is required!" />
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Email:</label>
+                    <div class="col-sm-10">
+                        <input type="text" style="background-color:#DEDEDE;" id="emailAddress" class="form-control" ng-model="signup.emailAddress" placeholder="Email" name="emailAddress" ng-pattern="emailPattern" required readonly/>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="cellNumber" class="col-sm-2 control-label">Phone Number:</label>
+                    <div class="col-sm-5">
+                        <input type="text" id="cellNumber" class="form-control" ng-model="signup.cellNumber" name="cellNumber" style="display: inline-block;" ui-mask="(999) 999 9999" ui-options="{clearOnBlur: false}" ng-blur="checkCellNumber(signup.cellNumber,signup.cellNumber.length)" ng-focus="resetCellNumber()" />
+
+                        <!--phone cellnumber validations start-->
+                        <div ng-hide="signup.cellNumber.length===0 ">
+                            <img src="images/failSmallBlue.gif?random={{randomNum.cellNumber}}" ng-if="cellNumberDuplicate" tooltip-placement="top" uib-tooltip="Phone number already in use." class="red-tooltip signup-loading errorImg" />
+
+                            <img src="images/failSmallBlue.gif?random={{randomNum.cellNumber}}" tooltip-placement="left" uib-tooltip="Phone number must be 10 digits!" class="red-tooltip signup-loading errorImg" ng-if="cellNumberFailed" />
+                            <span class="signup-loading err-critical" ng-show="cellNumberFailed==true">
+                                <span class="errorMsg">Phone number must be 10 digits.</span>
+                            </span>
+
+                            <span class="signup-loading err-critical" ng-show="cellNumberDuplicate==true">
+                                    <span class="errorMsg">Phone number already in use.</span>
+                            </span>
+
+                        </div>
+                        <!--phone number validations end-->
+
+
+                    </div>
+                    <br class="clearfix visible-xs-block" />
+                    <div class="col-sm-5">
+                        <label for="emailNotifications" class="control-label">Enable Email Notifications?:
+
+                        </label>
+                        <input type="checkbox" ng-model="business.enableNotifications" name="enableNotifications">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 ChangePassword">
+                        <a href="/home/changepassword" class="rpLink">Change Password</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <h3>Location</h3>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label">Address:</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="street_address_long1" class="form-control readonly" placeholder="Address" ng-model="business.address" name="street_address_long1" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <input type="text" id="city" placeholder="City" class="form-control readonly" ng-model="business.city" name="city" readonly />
+                    </div>
+                    <br class="clearfix visible-xs-block" />
+                    <div class="col-sm-3">
+                        <input type="text" id="state" placeholder="State" class="form-control readonly" ng-model="business.state" name="state" readonly />
+                    </div>
+                    <br class="clearfix visible-xs-block" />
+                    <div class="col-sm-3">
+                        <input type="text" id="zipcode" placeholder="Zip Code" class="form-control readonly" ng-model="business.zipcode" name="zipcode" ng-trim="false" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Customize Questions</h3>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Value:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="Qfoodtext" class="form-control" placeholder="Value?" ng-model="customfoodlabel.Qfoodtext" style="display: inline-block;" maxlength={{maxCharLimit}} ng-maxlength="maxCharLimit" ng-trim="false" />
+
+                        <span class="gray grayPhoneNumber">{{maxCharLimit - customfoodlabel.Qfoodtext.length}} characters remaining</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Service:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="Qservicetext" class="form-control" placeholder="Service?" ng-model="customservicelabel.Qservicetext" style="display: inline-block;" maxlength={{maxCharLimit}} ng-maxlength="maxCharLimit" ng-trim="false" />
+
+                        <span ng-hide="ProfileForm.Qservicetext.$error.maxlength" class="gray grayPhoneNumber">{{maxCharLimit - customservicelabel.Qservicetext.length}} characters remaining</span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Overall Experience:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="Qcleantext" class="form-control" placeholder="Overall Experience?" ng-model="customcleanlabel.Qcleantext" style="display: inline-block;" maxlength={{maxCharLimit}} ng-maxlength="maxCharLimit" ng-trim="false" />
+                        <span ng-hide="ProfileForm.Qcleantext.$error.maxlength" class="gray grayPhoneNumber">{{maxCharLimit - customcleanlabel.Qcleantext.length}} characters remaining</span>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <h3>Promotion</h3>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Promotion Image:</label>
+                    <div class="col-sm-10">
+
+                        <div style="background-image: url({{promotionImage}})" class="drop-box promotion-box" ngf-drop ngf-select="upload($file, $invalidFile, false)" ngf-drag-over-class="'dragover'" accept="image/*" ngf-capture="camera" ngf-resize="{width: 600, height: 400}" ngf-resize-if="$width > 600 || $height > 400" ng-mouseenter="isEditPromotionImage=true" ng-mouseleave="isEditPromotionImage=false" ng-init="isEditPromotionImage=false" ng-model="promotionImageForDB">
+
+                            <a class="btn-edit-image" ng-show="isEditPromotionImage" ng-click="$event.preventDefault();">Edit</a>
+                        </div>
+
+
+                        <span class="signup-loading err-critical" ng-show="isPromotionImgUnSupported">
+                            <span class="errorMsgPromotionImage">Unsupported file format!!! (Only GIF, JPG, JPEG and PNG are allowed) </span>
+                        </span>
+
+                        <span class="signup-loading err-critical" ngf-no-file-drop>
+                            <span class="errorMsgPromotionImage">File Drag/Drop is not supported for this browser</span>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Promotion Text:</label>
+                    <div class="col-sm-10">
+                        <textarea name="promotionText" class="form-control textarea" placeholder="Promotion Text" ng-model="promotionText" maxlength={{promotionTextCharLimit}} ng-maxlength="promotionTextCharLimit" ng-trim="false"></textarea>
+
+                        <span ng-hide="ProfileForm.Qservicetext.$error.maxlength" class="gray grayPhoneNumber">{{promotionTextCharLimit - promotionText.length}} characters remaining</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-12 text-center">
+                <div class="field" ng-show="resMessage">
+                    <span ng-class="{'succ-message': isSuccess, 'text-success': !isSuccess}">{{resMessageContent}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-5">
+                        <button name="saveProfile" type="button" class="btn primary-bg-blue" ng-click="UpdateProfile(ProfileForm.$valid)">Save Changes
+                            <span ng-show="spinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

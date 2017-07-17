@@ -1,0 +1,7 @@
+node_modules/
+public/lib/
+logs/
+deploy/
+upload_files/
+
+grunt.json

@@ -1,0 +1,84 @@
+<% include partials/header.ejs%>
+
+    <link href="css/style.css" rel="stylesheet">
+    <%# <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css" rel="stylesheet"> %>
+        </head>
+
+        <body ng-app="shmib" ng-controller="userReview" id="ratenum">
+
+            <div class="full-page bg-color bg-color-{{formData.screenNumber}}"></div>
+
+
+            <!-- form.html -->
+
+            <div id="form-container" class="text-center userReviewFirstPage">
+
+
+                <!-- use ng-submit to catch the form submission and use our Angular function -->
+                <form id="signup-form" name="signupForm" ng-submit="processForm()" novalidate>
+                    <div id="top-navigation" class="navHideTop" ng-class="{'navShowTop':showNavigation}">
+                        <img src="images/arrow-back.svg" ng-click="ChangeState('back')" style="float:left">
+                        <img src="images/arrow-next.svg" ng-click="ChangeState('next')" style="float:right" ng-if="formData.screenNumber < 5 && formData.screenNumber > 1">
+
+                        <!---Navigation Button Here--->
+                        <div class="ng-cloak marginRight_1_percent" ng-hide="formData.screenNumber > 1">
+
+                            <!--<div class=" margin-top_10 text-center radio-toolbar clearfix">
+                                <span class="txt-rht">Shmibed Before?</span>
+                            </div>-->
+
+                            <!---Navigation Button Here--->
+
+                            <div class="text-center radio-toolbar" style="padding-top:15px;">
+                                <a ng-if="userid !=null && verifyemail == true" href="/me/review/list"> <span class="wht-color txt-rht txt-upper">YOUR SHMIBS</span></a>
+                                <!--<a ng-if="userid==null || verifyemail != true" href="/auth/login"> <span class="wht-color txt-rht txt-upper marginTop-15">SIGN IN</span></a>-->
+                                <div class="text-right" ng-if="userid==null || verifyemail != true">Shmibed Before? <button class="btn btn-primary" onclick="window.location.href='/auth/login'">Sign In</button></div>
+                            </div>
+                        </div>
+<!--
+                            <div class="margin-bottom_20 text-center radio-toolbar">
+                                <a ng-if="userid !=null && verifyemail == true" href="/me/review/list"> <span class="wht-color txt-lft txt-upper">YOUR SHMIBS</span></a>
+                                <a ng-if="userid==null || verifyemail != true" href="/auth/login"> <span class="wht-color txt-rht txt-upper marginTop-15">SIGN IN</span></a>
+                                        <a ng-click="SKIP('next')"> <span class="wht-color txt-rht txt-upper">NEXT</span></a>
+                        </div>
+-->
+
+                    </div>
+                    <!-- our nested state views will be injected here -->
+                    <div id="form-views" ui-view="projectlistview"></div>
+
+                    <div class="row page-indicator navHideTop" ng-class="{'navShowTop':showNavigation}" ng-if="!$state.is('userReview') && !$state.is('userReview.comment') && !$state.is('userReview.complete')">
+
+                        <div class="indicator" ng-class="{'selected': formData.screenNumber == 1}"></div>
+                        <div class="indicator" ng-class="{'selected': formData.screenNumber == 2}"></div>
+                        <div class="indicator" ng-class="{'selected': formData.screenNumber == 3}"></div>
+                        <div class="indicator" ng-class="{'selected': formData.screenNumber == 4}"></div>
+                        <div class="indicator" ng-class="{'selected': formData.screenNumber == 5}"></div>
+
+                    </div>
+                </form>
+            </div>
+
+            <script>
+                var restaurant = <%- JSON.stringify(restaurant) %>;
+                var user = <%- JSON.stringify(user) %>;
+                var customLabel = <%- JSON.stringify(customLabel) %>;
+                var restaurantName = <%- JSON.stringify(restaurantName) %>;
+                var biztype = <%- JSON.stringify(biztype) %>;
+                var streetAddress = <%- JSON.stringify(streetAddress) %>;
+                var city = <%- JSON.stringify(city) %>;
+                var state = <%- JSON.stringify(state) %>;
+                var zip = <%- JSON.stringify(zip) %>;
+                var promotionImage = <%- JSON.stringify(promotionImage) %>;
+                var promotionText = <%- JSON.stringify(promotionText) %>;
+
+            </script>
+            <% include partials/jsfiles.ejs%>
+
+                <script type="text/javascript" src="/js/routes/userReview.routes.js"></script>
+                <script type="text/javascript" src="/js/controllers/userReview.client.controller.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                <script type="text/javascript" src="/js/controllers/installapp.modal.client.controller.js"></script>
+        </body>
+
+        </html>

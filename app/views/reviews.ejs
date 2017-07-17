@@ -1,0 +1,29 @@
+<% include partials/header.ejs%>
+<link type="text/css" rel="stylesheet" media="all" href="../css/review.css">
+<% // include file specific css files here %>
+</head>
+    <body ng-app="shmib" class="">
+
+        <div class="mainContainer">
+            <% include partials/topbar.ejs %>
+            <div class="container">
+                <div ui-view></div>
+            </div>
+            
+        </div>
+    
+        <script>
+            window.scrollTo(0, 1); 
+			var user = <%- JSON.stringify(user) %>;
+
+        </script>
+
+        <% include partials/jsfiles.ejs%>
+        <% // include file specific js files here %>
+
+        <script type="text/javascript" src="/js/routes/reviews.routes.js"></script>
+        <script type="text/javascript" src="/js/controllers/topbar.client.controller.js"></script>
+        <script type="text/javascript" src="/js/controllers/reviews.client.controller.js"></script>
+        <script type="text/javascript" src="/js/controllers/reviewDetails.client.controller.js"></script>
+    </body>
+</html>

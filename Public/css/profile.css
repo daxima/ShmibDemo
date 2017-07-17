@@ -1,0 +1,446 @@
+.white {
+    color: #ffffff;
+}
+
+.brand {
+    color: #f66c66;
+}
+
+
+/* profile Section */
+
+.profileWrapper {
+    width: 1000px;
+    margin: 20px auto;
+}
+
+.profileWrapper h2,
+.profileWrapper h3,
+.profileWrapper h5 {
+    color: #ffffff;
+}
+
+.profileWrapper h5 {
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+.profileHeader {
+    height: 120px;
+    padding: 40px 20px;
+    background-color: #716d61;
+    /*    width: 97.4%;*/
+    margin: 0px auto 0px;
+}
+
+.profileHeader .top-right-nav {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.profileHeader .top-right-nav span,
+.profileHeader .top-right-nav a {
+    font-size: 14px !important;
+    color: #fff;
+    font-weight: bold
+}
+
+.profileHeader .btn-default {
+    background-color: #706d61;
+    background-image: -webkit-linear-gradient(top, #706d61, #676458);
+    background-image: -moz-linear-gradient(top, #706d61, #676458);
+    background-image: -o-linear-gradient(top, #706d61, #676458);
+    background-image: -ms-linear-gradient(top, #706d61, #676458);
+    background-image: linear-gradient(top, #706d61, #676458);
+}
+
+.profileHeader .btn-default {
+    border-color: #676456;
+}
+
+.profileDetails {
+    color: #676458;
+    background-color: #ffffff;
+}
+
+.profileDetails .row {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 20px;
+}
+
+.profileDetails h3 {
+    color: #676458;
+    font-weight: normal;
+}
+
+.profileDetails .starsWrapper span {
+    color: #f66c66;
+    font-size: 28px;
+}
+
+.profileDetails a.showDetails,
+.profileDetails a.showDetails:hover,
+.profileDetails a.showDetails:active,
+.profileDetails a.showDetails:visited {
+    color: #f66c66;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.profileDetails .timeElapsed {
+    line-height: 2em;
+}
+
+.profileDetails .otherActions {
+    font-size: 22px;
+}
+
+.profileDetails a.rpLink,
+.profileDetails a.rpLink:hover,
+.profileDetails a.rpLink:active,
+.profileDetails a.rpLink:visited {
+    color: #f66c66;
+    text-decoration: none;
+    line-height: 4rem;
+}
+
+.profileDetails .smallText {
+    color: #edeae6;
+    font-size: 18px;
+    font-weight: 200px;
+}
+
+.opacity_half {
+    opacity: 0.5;
+}
+
+.profileDetails .btn {
+    color: #ffffff;
+    outline: none;
+}
+
+.profileDetails .btn:active {
+    background: #E4534D !important;
+    outline: none;
+}
+
+
+/* Form */
+
+.field {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.label {
+    position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    bottom: 0;
+    color: #636463;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.prefix-label {
+    display: inline-block;
+}
+
+.input {
+    width: 100%;
+    font-size: 100%;
+    font-weight: normal;
+    padding: 0 10px;
+    background-color: transparent;
+    /*height: 4rem;*/
+    line-height: 4rem;
+    border: 1px solid #979797;
+    color: #636463;
+    transition: all 0.2s ease-in;
+}
+
+.input:focus {
+    outline: 0;
+    border-color: #979797;
+}
+
+
+/* Using required and a faux pattern to see if input has text from http://stackoverflow.com/questions/16952526/detect-if-an-input-has-text-in-it-using-css */
+
+.input:focus + .label,
+input:valid + .label {
+    transform: translateY(28%);
+    font-size: 100%;
+    color: #636463;
+    font-weight: normal;
+    right: -90px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-padding-end: 25px;
+    -moz-padding-end: 25px;
+    -webkit-padding-mealt: 10px;
+    -moz-padding-mealt: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    /* For Chrome and Safari */
+    /* For old Fx (3.6 to 15) */
+    /* For pre-releases of IE 10*/
+    /* For old Opera (11.1 to 12.0)
+  background-image: url(../img/triangleDown.png);
+  /* Standard syntax; must be last */
+    background-position: center left;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mealvalue {
+    float: left;
+}
+
+input.meal {
+    display: none;
+}
+
+label.meal {
+    float: right;
+    padding: 10px 0px;
+    font-size: 16px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.meal:checked ~ label.meal:before {
+    content: "\e148";
+    color: #333;
+    transition: all .25s;
+}
+
+input.meal-5:checked ~ label.meal:before {
+    color: #f66c66;
+}
+
+input.meal-4:checked ~ label.meal:before {
+    color: #f66c66;
+}
+
+input.meal-3:checked ~ label.meal:before {
+    color: #f66c66;
+}
+
+input.meal-2:checked ~ label.meal:before {
+    color: #f66c66;
+}
+
+input.meal-1:checked ~ label.meal:before {
+    color: #f66c66;
+}
+
+label.meal:before {
+    content: '\e148';
+    font-family: 'Glyphicons Halflings';
+}
+
+label.mealcolor {
+    color: #f66c66;
+}
+
+.col10 {
+    width: 98%;
+    padding-left: 18%;
+}
+
+.col9 {
+    width: 96%;
+    padding-left: 18%;
+}
+
+label.meal:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+
+.drop-box {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    padding-top: 25px;
+    position: relative;
+    /*
+    right: -5px;
+    top: -40px;   
+    */
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    z-index: 99;
+    border: 2px dashed grey;
+}
+
+.reviewerProfile .drop-box {
+    left: 130px;
+    right: 0px;
+}
+
+a.btn-edit-image,
+a.btn-edit-image:active,
+a.btn-edit-image:hover,
+a.btn-edit-image:visited {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 30px;
+    height: 15px;
+    background: #000;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.dragover,
+.drop-box:hover {}
+
+.unsupportedfile {
+    background: #ffffff none repeat scroll 0 0;
+    color: #ff0000;
+    padding: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.reviewerProfile .unsupportedfile {
+    left: 140px;
+    top: 0px;
+    width: 260px;
+}
+
+.unsupportedfile .close {
+    position: absolute;
+    right: 27px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    opacity: 1;
+}
+
+.unsupportedfile .close:hover {
+    opacity: 1;
+}
+
+.unsupportedfile .close:before,
+.unsupportedfile .close:after {
+    position: absolute;
+    left: 33px;
+    content: ' ';
+    height: 18px;
+    width: 3px;
+    background-color: #f66c66;
+}
+
+.unsupportedfile .close:before {
+    transform: rotate(45deg);
+}
+
+.unsupportedfile .close:after {
+    transform: rotate(-45deg);
+}
+
+
+/*
+.signup-loading {
+  display: inline-block;
+  position: absolute;
+    left:0;
+    right: 0;
+    top: 0px;
+	z-index: 1;
+}
+.signup-loading span{
+    position: absolute;
+    left:15px;
+    top:39px;
+}
+
+.signup-loading img{
+    position: absolute;
+    top:1px;
+    right:17px;
+}
+*/
+
+@media screen and (max-width: 767px) {
+    .profileHeader .top-right-nav {
+        text-align: right;
+    }
+    .profileWrapper {
+        width: 100%;
+    }
+    .changePassword {
+        margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    #topBar .navbar {
+        margin-bottom: 0px;
+    }
+    #topBar .navbar-default .navbar-nav > li > a {
+        height: 40px;
+        line-height: 10px;
+    }
+    .profileWrapper {
+        width: 100%;
+        margin-top: 0;
+    }
+    .profileHeader .top-right-nav span,
+    .profileHeader .top-right-nav a {
+        font-size: 12px !important;
+        color: #fff;
+        font-weight: bold
+    }
+    .reviewerProfile .drop-box {
+        right: 0;
+        left: inherit;
+    }
+}
+
+.promotion-box {
+    margin: 0 0 15px;
+    width: 300px !important;
+    height: 200px !important;
+}

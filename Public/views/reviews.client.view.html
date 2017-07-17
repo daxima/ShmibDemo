@@ -1,0 +1,113 @@
+<style>
+    .noReviews {
+        padding-left: 15px
+    }
+    
+    .ratingHeader {
+        color: #666;
+        text-decoration: none;
+    }
+    
+    .reviewsHeader h2 {
+        margin: 0px;
+    }
+    
+    .reviewsHeader h5 {
+        margin: 5px;
+    }
+    
+    .reviewsHeader .btn-default {
+        background-color: #fff;
+        background-image: none;
+    }
+
+</style>
+<div ui-view class="reviewDetailView"></div>
+<div id="review" class="reviewsWrappers" ng-controller="reviewsCtrl">
+    <div class="reviewsHeader">
+        <div class="row">
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                            <h2 name="reviewHeader" lass="margin-0">Shmibs for</h2>
+                            <h5> {{companyName}}</h5>
+                            <h5> {{companyAddress}}</h5>
+                        </div>
+                    </td>
+                    <td style="align:right;">
+                        <div class="col-sm-5 pull-right">
+                            <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
+                    {{selectedItem}} <span class="caret"></span>
+                </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li ng-repeat="a in monthRange"><a ng-click="dropboxitemselected(a)">{{a.text}} </a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="reviewListing">
+        <div class="row">
+            <div class="col-sm-12 noReviews">
+                <div ng-show="(Reviews == null || Reviews.length==0) && !isUserSelectedMonth" class="otherActions" style="text-align:center;">Currently no shmibs for your business. Please send this link
+                    <a ng-href="{{reviewLink}}">
+                            {{reviewLink}}
+                    </a> to your users to give shmibs.</div>
+                <div ng-show="(Reviews == null || Reviews.length==0) && isUserSelectedMonth" class="otherActions" style="text-align:center;">No shmibs found for the specified month.</div>
+            </div>
+        </div>
+
+        <div class="middlepage" ng-if="showLoader">
+
+            <img src="images/loaderBlue.svg" height="80" />
+
+        </div>
+        <div class="row" ng-show="Reviews.length > 0">
+            <div class="col-xs-6 col-sm-4">
+                <div class="text-center">
+                    <a href="javascript:;" style="color:#666;text-decoration:none;"><strong ng-click="orderByField='rating';reverseSort = !reverseSort">Rating </strong>
+                <span class="glyphicon glyphicon-sort" ng-click="orderByField='rating';reverseSort = !reverseSort"></span>
+                </a> </div>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <a href="javascript:;" class="ratingHeader"><strong ng-click="orderByField='timeElapsed';reverseSort = !reverseSort">Shmib Date</strong>
+                <span class="glyphicon glyphicon-sort" ng-click="orderByField='timeElapsed';reverseSort = !reverseSort"></span>
+                </a>
+            </div>
+            <div class="col-sm-4 text-center"></div>
+        </div>
+
+        <div class="row" ng-repeat="r in Reviews.slice(((CurrentPage-1)*itemsPerPage), ((CurrentPage)*itemsPerPage)) | orderBy:orderByField:!reverseSort">
+            <div class="col-sm-4 text-center">
+                <div>
+                    {{r.shmibberFirstName}} {{r.shmibberLastName}} <span ng-show="r.shmibberFirstName!='Anonymous'">Count:{{r.totalShmibCount}}</span></div>
+                <div class="starsWrapper">
+
+                    <span ng-repeat="s in r.review">
+        		<span  class="{{s.star}}"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-4" style="vertical-align:middle;">
+                <div class="timeElapsed" ng-show="r.isDay==false">
+                    {{r.timeElapsed}}
+                </div>
+                <div class="timeElapsed" ng-show="r.isDay==true">
+                    {{r.timeElapsed | date : 'MMM dd, yyyy' }} at {{r.timeElapsed | date :'hh:mm a'}}
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <a name="showDetails" ui-sref="reviews.details({id: r.id})" class="showDetails">Show Details</a>
+            </div>
+        </div>
+
+        <div class="paginationAlign" ng-show="Reviews.length > 0">
+            <ul style="background-color: red;
+    border-color: #f66c66;" uib-pagination total-items="TotalItems" ng-model="CurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage">
+            </ul>
+        </div>
+    </div>
+</div>

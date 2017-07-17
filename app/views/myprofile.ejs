@@ -1,0 +1,44 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/profile.css">
+    <% // include file specific css files here %>
+        </head>
+
+        <body ng-app="shmib" class="signup primary-bg" ng-controller="myprofileCtrl">
+
+            <div class="mainContainer">
+
+                <div class="container">
+                    <div class="profileHeader reviewerProfile">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div id="top-navigation">
+                                    <img ng-click="getMyReview()" src="../images/arrow-back.png" class="chat-arrow-back profile-arrow">
+                                </div>
+                                <h2 class="margin-0 profile-text" style="color:#fff;">Profile</h2>
+                            </div>
+                            <div class="col-md-3 profileTopBar">
+                                <% include partials/topbarReviewer.ejs %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ui-view></div>
+                </div>
+            </div>
+
+            <script>
+                window.scrollTo(0, 1);
+
+                var user = <%- JSON.stringify(user) %>;
+
+            </script>
+
+            <% include partials/jsfiles.ejs%>
+                <% // include file specific js files here %>
+                    <script type="text/javascript" src="/js/routes/myprofile.routes.js"></script>
+                    <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                    <script type="text/javascript" src="/js/controllers/topbar.client.controller.js"></script>
+                    <script type="text/javascript" src="/js/controllers/myprofile.client.controller.js"></script>
+        </body>
+
+        </html>

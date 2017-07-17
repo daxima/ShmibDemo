@@ -1,0 +1,27 @@
+<div class="row" style="border-bottom:1px solid #666;padding:5px;margin-left:0px !important;margin-right:0px !important;">
+    <div class="col-xs-12 text-left">
+        <p class="title" style="color:#666;font-size:18px; font-weight:bold;margin:0 0 1px !important;">{{ match.model.companyname }}</p>
+    </div>
+	<div class="col-xs-12 text-left">
+        <p class="title" style="color:#666;font-size:12px;margin:0 0 1px !important;">{{match.model.address}}</p>
+    </div>
+    <div class="col-xs-12 text-left">
+        <ul class="list-inline rating-star">
+			<li style="color:#666;font-size:12px;"><span  ng-repeat="s in match.model.overallRating"><span class="{{s.star}}"></span>
+				</span>
+			</li>
+           <!-- <li style="color:#666;font-size:12px;float:right;line-height:30px;">
+				<div class="mealvalue">
+					<label style="padding:0px 0px !important;" class="meal meal-4" ng-class="{mealcolor:match.model.priceLevel==4}" 
+							for="meal-4"></label>
+					 <label style="padding:0px 0px !important;" class="meal meal-3" 
+							ng-class="{mealcolor:match.model.priceLevel==3 ||match.model.priceLevel >3}" for="meal-3"></label>
+					 <label class="meal meal-2" style="padding:0px 0px !important;"
+							ng-class="{mealcolor:match.model.priceLevel==2 ||match.model.priceLevel >2}" for="meal-2"></label>
+					 <label class="meal meal-1" style="padding:0px 0px !important;"
+							ng-class="{mealcolor:match.model.priceLevel==1 ||match.model.priceLevel >1}" for="meal-1"></label>
+				</div>
+			</li>-->
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,185 @@
+<style>
+    .field {
+        position: relative;
+        margin-bottom: 12px;
+    }
+    
+    .signup-loading {
+        position: initial;
+        left: 0;
+    }
+    
+    .fristNameError {
+        left: 15px;
+        position: absolute;
+        top: 39px;
+        width: 130px;
+    }
+    
+    .fristNameImg {
+        position: absolute;
+        right: 16px;
+        top: 1px;
+    }
+    
+    .userId {
+        display: inline-block;
+        background-color: #DEDEDE;
+    }
+    
+    .phoneDup {
+        position: relative;
+        left: 665px;
+        top: -39px;
+    }
+    
+    .phoneDupMsg {
+        left: -270px;
+        padding-left: 0;
+        position: relative;
+        text-align: left;
+        top: -40px;
+    }
+    
+    .phoneInvalid {
+        text-align: left;
+        color: red;
+        left: 0px;
+        top: 2px;
+        position: relative;
+    }
+    
+    .errorMsg {
+        position: absolute;
+        left: 14px;
+        top: 39px;
+        margin-top: 0px;
+        display: block;
+    }
+    
+    .errorMsgProfileImage {
+        left: 15px;
+        position: absolute;
+        top: 118px;
+    }
+    
+    .errorImg {
+        position: absolute;
+        right: 16px;
+        top: 1px;
+    }
+    
+    .fieldCheckBox {
+        margin-bottom: 0px;
+    }
+
+</style>
+<div id="profile">
+
+    <div class="profileDetails">
+        <form name="ProfileForm" id="ProfileForm" class="form-horizontal" autocomplete="off" novalidate>
+            <div class="row">
+                <div>
+                    <label for="" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-8" style="padding-top:1px;padding-left:4px;"><span>You shmibed {{reviewCount == null ? 0 : reviewCount}} time(s)! </span> </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group profilePic">
+                    <label class="col-sm-2 control-label">Profile Picture:</label>
+                    <div class="col-sm-8">
+
+                        <div style="background-image: url({{profileImage}})" ng-model="profileImageForDB" ngf-multiple="true" ngf-select="upload($file, $invalidFile)" class="drop-box" accept="image/*" ngf-drag-over-class="'dragover'" ngf-capture="camera" ng-mouseenter="isEditImage=true" ng-mouseleave="isEditImage=false" ng-init="isEditImage=false" ngf-resize="{width: 200, height: 200}" ngf-resize-if="$width > 200 || $height > 200">
+
+                            <a class="btn-edit-image" ng-show="isEditImage" ng-click="$event.preventDefault();">Edit Image</a>
+                        </div>
+
+                        <span class="signup-loading err-critical" ng-show="isUnSupportedType">
+							 <span class="errorMsgProfileImage">Unsupported file format!!! (Only GIF, JPG, JPEG and PNG are allowed)</span>
+                        </span>
+
+                        <span class="signup-loading err-critical" ngf-no-file-drop>
+							 <span class="errorMsgProfileImage">File Drag/Drop is not supported for this browser</span>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label">First Name:</label>
+                    <div class="col-sm-8">
+                        <input style="height:40px;" type="text" id="firstName " placeholder="First Name" class="form-control" ng-model="signup.firstName" name="firstName" required/>
+
+                        <span class="signup-loading err-critical" ng-show="profileFormValid && ProfileForm.firstName.$error.required">
+							 <span class="errorMsg">First name is required.</span>
+                        <img src="images/failSmallBlue.gif" class="red-tooltip errorImg" />
+                        </span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-2 control-label">Last Name:</label>
+                    <div class="col-sm-8 field">
+                        <input type="text" style="height:40px;" id="lastName " placeholder="Last Name" class="form-control" ng-model="signup.lastName" name="lastName" required />
+
+                        <span class="signup-loading err-critical" ng-show="profileFormValid && ProfileForm.lastName.$error.required">
+							<span class="errorMsg">Last name is required.</span>
+                        <img src="images/failSmallBlue.gif" class="red-tooltip errorImg" /> </span>
+                    </div>
+                    <div class="col-sm-8"></div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Email:</label>
+                    <div class="col-sm-8 field">
+                        <input type="text" style="height:40px;" id="emailAddress" placeholder="Email" class="form-control userId" ng-model="signup.emailAddress" name="emailAddress" readonly/>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cellNumber" class="col-sm-2 control-label">Phone Number:</label>
+                    <div class="col-sm-8 field">
+                        <input type="text" style="height:40px;" id="cellNumber" class="form-control" ng-model="signup.phoneNumber" name="cellNumber" style="display: inline-block;" ui-mask="(999) 999 9999" ui-options="{clearOnBlur: false}" ng-blur="checkPhoneNumber(signup.phoneNumber,signup.phoneNumber.length)" ng-focus="resetPhoneNumber()" />
+
+                        <div ng-hide="signup.phoneNumber.length===0">
+
+                            <span class="signup-loading err-critical" ng-show="phoneNumberFailed==true">
+                                    <span class="errorMsg">Phone number must be 10 digits.</span>
+                            <img src="images/failSmallBlue.gif" class="red-tooltip errorImg" />
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="EmailNotification" class="col-sm-2 control-label">Enable Email Notifications?:</label>
+                    <div class="col-sm-8 fieldCheckBox">
+                        <input type="checkbox" ng-model="signup.enableNotifications">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-2 text-left">
+                        <a href="/me/changepassword" class="rpLink">Change Password</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12 text-center">
+                <div class="field" ng-show="resMessage">
+                    <span ng-class="{'succ-message': isSuccess, 'text-success': !isSuccess}">{{resMessageContent}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-offset-2  col-md-12">
+                    <div class="col-sm-12 text-center">
+                        <button name="saveProfile" type="submit" class="btn primary-bg" ng-click="UpdateProfile(ProfileForm.$valid)" ng-disabled="phoneNumberFailed==true ||ProfileForm.emailAddress.$error.required==true 														||ProfileForm.emailAddress.$error.pattern==true"> Save Changes
+                            <span ng-show="spinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

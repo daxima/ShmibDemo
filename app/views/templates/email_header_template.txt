@@ -1,0 +1,7 @@
+
+<div style="width: 550px; margin-left: auto; margin-right: auto; border: 2px solid #F66C66;">
+<div style="text-align: center;background-color:#F66C66;">
+    <img alt="Shmib" src="{{logoURL}}">
+</div>
+
+<div style="padding: 20px;">

@@ -1,0 +1,292 @@
+@import "base.less";
+
+/* Container */
+.container-login, .container-resetpwd, .container-signup, .container-rescategory {
+  position: absolute;
+  width: 30em;
+  height: 25em;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-50%);
+  animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.container-rescategory {
+    width: 35em;
+}
+
+.container-signup, .container-rescategory {
+    height: auto;
+    top: 40%;
+    transform: translate(-50%,-40%);
+}
+
+.container-login, .container-signup, .container-rescategory{
+    background: #f8f8f8;
+}
+
+.container-signup label{
+    display: inline-block;
+    font-weight: normal;
+    color:#f66c66;
+}
+
+.signup-loading {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: -2px;
+}
+
+ .container-resetpwd {
+    top:55%;
+}
+
+.signupMessage{
+    color: #ffffff;
+    font-size: 14px;
+    padding: 20px 10px 0;
+}
+
+.signupMessage a, .signupMessage a:focus, .signupMessage a:visited{
+    font-weight: bold;
+    text-decoration: none;
+     color: #ffffff;
+}
+
+/* Profile Card */
+.profile {
+  position: relative;
+}
+.profile--open {
+}
+.profile .profile__form {
+  height: auto;
+  /*transform: translateY(-8em);*/
+  padding-top: 30px;
+}
+.profile .profile__fields {
+  opacity: 1;
+}
+
+.profile__form {
+  position: relative;
+  height: auto;
+  padding: 3em;
+  border-radius: .25em;
+  -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+  transition: 
+    opacity .4s ease-in-out,
+    height .4s ease-in-out,
+    transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.profile__fields {
+  transition: opacity .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.profile__avatar {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1.25em;
+  overflow: hidden;
+  width: 4.5em;
+  height: 4.5em;
+  display: block;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+.profile__avatar:focus {
+  outline: 0;
+}
+.profile__footer {
+  padding-top: 1em;
+  text-align: center;
+}
+
+.profile__footer a, .profile__footer a:hover, .profile__footer a:active, .profile__footer a:visited{
+    line-height: 3em;
+    color: @brand;
+    text-decoration: none;
+}
+
+/* Form */
+.field {
+  position: relative;
+  margin-bottom: 2em;
+}
+.label {
+  position: absolute;
+  height: 2rem;
+  line-height: 2rem;
+  bottom: 0;
+  color: #636463;
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.prefix-label {
+    display: inline-block;
+}
+.input {
+  width: 100%;
+  font-size: 100%;
+  font-weight: normal;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  height: 4rem;
+  line-height: 4rem;
+  border-bottom: 1px solid #979797;
+  color: #636463;
+  transition: all .2s ease-in;
+}
+.input:focus {
+  outline: 0;
+  border-color: #979797;
+}
+
+/* Using required and a faux pattern to see if input has text from http://stackoverflow.com/questions/16952526/detect-if-an-input-has-text-in-it-using-css */
+.input:focus + .label,
+input:valid + .label {
+  transform: translateY(28%);
+  font-size: 100%;
+  color: #636463;
+  font-weight: normal;
+  right:-90px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-padding-end: 25px;
+    -moz-padding-end: 25px;
+    -webkit-padding-mealt: 10px;
+    -moz-padding-mealt: 10px;
+/*    
+     -webkit-appearance: button;
+    -moz-appearance: button;
+    */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    /* background-image: url(../img/triangleDown.png); /* For Chrome and Safari */
+    /* background-image: url(../img/triangleDown.png); /* For old Fx (3.6 to 15) */
+    /*  background-image: url(../img/triangleDown.png); /* For pre-releases of IE 10*/
+   /* background-image: url(../img/triangleDown.png); /* For old Opera (11.1 to 12.0) */ 
+    /*background-image: url(../img/triangleDown.png); /* Standard syntax; must be last */
+    background-position: center left;
+    background-repeat: no-repeat;
+    border-radius: 0px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+/* Button */
+.profile .btn, .profile .white-button {
+  border: 0;
+  font-size: 14px;
+  min-width:130px;
+  height: 40px;
+  line-height: 2.5rem;
+  padding: 0 1.5rem;
+  color: white;
+  background: #26b2d4;
+  letter-spacing: .1em;
+
+  border-radius: 40px; 
+  -moz-border-radius: 40px; 
+  -webkit-border-radius: 40px; 
+  /*border: 2px solid #26b2d4;*/
+  transition: background .2s;
+}
+
+.profile .btn:focus,
+.profile .white-button{
+  outline: 0;
+}
+
+.profile .btn:hover,
+.profile .btn:focus {
+  background: #26b2d4;
+}
+
+.profile .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
+    outline: 0 !important;
+}
+
+.forgot-password {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+
+.field-message {
+    background-color: transparent;
+    color: red;
+    display: block;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    padding: 2px 5px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.mealvalue input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+.mealvalue input[type=checkbox] + label:before {
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+}
+
+.mealvalue input[type=checkbox] + label:before { content: "\e148";  color: #333;} /* unchecked icon */
+.mealvalue input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+.mealvalue input[type=checkbox]:checked + label:before { content: "\e148"; color: @brand } /* checked icon */
+.mealvalue input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+
+.mealvalue{ width: 64px; margin: 0 auto;}
+
+input.meal { display: none; }
+
+label.meal {
+    float: right;
+  padding: 10px 0px;
+  font-size: 16px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.meal:checked ~ label.meal:before {
+  content: "\e148";
+  color: #333;
+  transition: all .25s;
+}
+
+input.meal-5:checked ~ label.meal:before { color: @brand; }
+input.meal-4:checked ~ label.meal:before { color: @brand; }
+input.meal-3:checked ~ label.meal:before { color: @brand; }
+input.meal-2:checked ~ label.meal:before { color: @brand; }
+input.meal-1:checked ~ label.meal:before { color: @brand; }
+
+label.meal:before {
+  content: '\e148';
+  font-family: 'Glyphicons Halflings';
+}

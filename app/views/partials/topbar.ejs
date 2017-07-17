@@ -1,0 +1,60 @@
+<div id="topBar" class="header" ng-controller="topbarCtrl">
+    <nav class="navbar navbar-default primary-bg-blue">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="/home/review/list/{{selectedBizId}}"><img src="/images/logo.png" alt="Shmib" /></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home/review/list/{{selectedBizId}}">Shmibs</a></li>
+                    <li><a href="/home/reports/{{selectedBizId}}">Reports</a></li>
+                    <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/home/coupons">Coupons</a></li>
+                            <li><a href="/home/review/list">Royality Programs</a></li>
+                            <li><a href="/home/review/list">Questions</a></li>
+                            <li><a href="/home/review/list">Promotion</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li name="bizDropDown" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;&nbsp;
+			<span ng-if="showLoader"><i class="glyphicon glyphicon-refresh spinning"></i></span><span ng-bind="restaurantName"></span><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="$event.preventDefault();goToMyReviews()">My Shmibber Account</a></li>
+                            <li><a href="/home/profile/{{selectedBizId}}">Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li ng-repeat="company in companies" ng-click="setCompany(company)"><a>{{company.name}} #{{company.id}}</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/help/signup/biz/contact#/branch?addAnotherBiz=true">Add Business</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- <li><a href="/home/review/list">Users</a></li>
+                            <li><a href="/home/review/list">Billing Info</a></li>
+                            <li><a href="/home/review/list">Billing History</a></li>
+                            <li role="separator" class="divider"></li> -->
+                            <li><a name="signOut" href="/auth/logout/biz">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <input type="hidden" ng-model="currentURL" />
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>

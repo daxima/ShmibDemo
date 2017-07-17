@@ -1,0 +1,68 @@
+<style>
+    .linkMsg {
+        font-size: 14px !important;
+        color: #fff;
+        font-weight: bold
+    }
+    
+    .titlebox {
+        width: 100%;
+        text-transform: none !important;
+    }
+    
+    .middlepage {
+        height: 400px !important;
+        left: 50% !important;
+        margin-left: -200px !important;
+        position: fixed !important;
+        top: 50% !important;
+        width: 400px !important;
+        background: transparent;
+    }
+
+</style>
+
+<div>
+    <div class="row">
+
+    </div>
+
+    <div class="row middlepage reviewListing" ng-show="noReviews">
+        <div class="container-fluid">
+            <span class="spanNoResult">You don't have a shmib yet.
+                     <a href="/me/biz/search">Write a new shmib.</a></span>
+        </div>
+    </div>
+
+    <div class="content-holder" style="padding-bottom:3.4%;">
+        <div class="row cursor rating-box" ng-repeat="r in Reviews" ng-click="getItemDetail(r)">
+
+            <div class="col-lg-6 col-md-6 col-xs-6 text-left">
+                <p class="title">{{r.companyName}}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6 text-right">
+                <ul class="list-inline ratingdate">
+                    <li>
+                        <span>{{r.timeElapsed |  date : 'MM/dd/yyyy' }}</span>
+                        <img src="../images/arrow-next.png">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 text-left">
+                <ul class="list-inline rating-star">
+                    <li ng-repeat="s in r.review"><span class="{{s.star}}"></span></li>
+                    <!--<li><i>Overall rating</i></li>-->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div name="#ft-review-index" class="row footer">
+    <ul class="bottom-tab">
+        <li name="getReviewPage" ng-click="getReviewPage()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-star-empty"></span><br/>Shmibs</a></li>
+        <li name="addReview" ng-click="getBizSearchPage()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-plus"></span><br/>New</a></li>
+        <li name="getMyProfile" ng-click="getMyProfile()"><a style="text-decoration:none;" href=""><span class="glyphicon glyphicon-user"></span><br/>Profile</a></li>
+    </ul>
+</div>

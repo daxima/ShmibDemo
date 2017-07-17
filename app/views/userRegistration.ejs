@@ -1,0 +1,36 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/blue.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body ng-app="shmib">
+
+
+        <div class="full-page bg-color "></div>
+        <form id="registrationForm" name="registrationForm" novalidate>
+            <div id="form-views" ng-controller="userRegistrationCtrl">
+
+                <!-- our nested state views will be injected here -->
+                <div ui-view="registrationview"></div>
+
+            </div>
+        </form>
+
+
+
+        <script>
+            var review = <%- JSON.stringify(review) %>;
+            var restaurant = <%- JSON.stringify(restaurant) %>;
+            var version = <%- JSON.stringify(version) %>;
+
+        </script>
+        <% include partials/jsfiles.ejs%>
+
+            <script type="text/javascript" src="/js/routes/afterReviewRegistration.routes.js"></script>
+            <script type="text/javascript" src="/js/controllers/userRegistrationComplete.client.controller.js"></script>
+            <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+            <script type="text/javascript" src="/js/controllers/terms.modal.client.controller.js"></script>
+    </body>
+
+    </html>

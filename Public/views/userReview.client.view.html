@@ -1,0 +1,68 @@
+<style>
+    .pageHeader,
+    img-responsive {
+        margin-top: 5%;
+    }
+    
+    .userReviewFirstPage #signup-form {
+        position: relative;
+    }
+    
+    .userReviewFirstPage #form-views {
+        display: inline-block;
+        position: relative;
+    }
+    
+    .userReviewFirstPage .footer-nav {
+        position: relative;
+        top: 40px;
+        left: 0;
+        right: 0;
+        padding: 0 30px 10px;
+        margin: 0;
+    }
+    
+    .userReviewFirstPage .btn-startShmibbing {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px;
+        background: #ada8a5;
+        padding: 7px 40px 8px 40px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .userReviewFirstPage .page-content {
+        display: inline-block;
+        top: 0px;
+    }
+    
+    .userReviewFirstPage .promotionText {
+        width: 600px;
+        margin: 40px 0 30px;
+        white-space: pre-line;
+        padding: 0 10px;
+    }
+    
+    .userReviewFirstPage .promotionImage {
+        max-width: 600px;
+        width: auto;
+    }
+
+</style>
+
+<div id="ratenum" class="text-center page-content">
+    <!---Page Title Here--->
+
+    <h4>{{restaurantName}}</h4>
+    <h5>{{streetAddress}}</h5>
+
+    <form action="" method="">
+        <img src="/images/chevron_logo.png" class="promotionImage" style="background-color:#fff;padding:15px;max-height:160px;" />
+        <p class="promotionText">Welcome to Chevron!  We appreciate your feedback</p>
+        <div class="btn-startShmibbing" ng-click="SKIP('next')">Start Shmibbing!</div>
+    </form>
+
+
+</div>

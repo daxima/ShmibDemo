@@ -1,0 +1,153 @@
+<!-- uiView: projectlistview -->
+<div ng-controller="MyreviewsdetailCtrl" class="myReviewDetails">
+    <!---Title Here--->
+    <style>
+        .reviewImg {
+            width: 25px;
+            height: 25px;
+            margin-left: 23px
+        }
+
+        .Question {
+            font-size: 11px;
+        }
+
+        table.reviewDetailsTable {
+            width: 100%;
+        }
+
+        table.reviewDetailsTable tr {
+            display: table;
+            width: 100%;
+            height: 70px;
+        }
+
+        table.reviewDetailsTable tr td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        table.reviewDetailsTable tr td.qtd {
+            width: 55%;
+            padding: 0 15px;
+        }
+
+        table.reviewDetailsTable tr td img {
+            max-height: 50px;
+            max-width: 70px;
+        }
+
+        @media (max-width: 414px) {
+            table.reviewDetailsTable tr {
+                height: 65px;
+            }
+        }
+
+    </style>
+    <div class="">
+        <div class="col-md-12 titlebox chat-titlebox text-center">
+            <div id="top-navigation" ng-if="token==''">
+                <img ng-click="getMyReview()" src="../images/arrow-back.png" class="chat-arrow-back">
+            </div>
+            <span style="text-transform:none !important;">{{companyName}}</span> <i>Your shmib on
+			{{Review.createdAt |  date : 'MM/dd/yyyy' }} </i>
+        </div>
+    </div>
+    <table class="reviewDetailsTable">
+        <tr class="rdFoodRating">
+            <td style="width:20%"><img src="../images/chevron_logo.png" style="background-color:#fff;padding:5px;"></td>
+            <td class="qtd">
+                <span class="list-inline ratingdate text-left">
+                    {{Question1}}
+				</span>
+            </td>
+            <td style="width:25%">
+                <ul class="list-inline reviewstar">
+                    <li ng-repeat="f in rdFoodRating">
+                        <span class="{{f.star}}"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="rdServiceRating">
+            <td style="width:20%"><img src="../images/chevron_logo.png" style="background-color:#fff;padding:5px;"></td>
+            <td class="qtd">
+                <span class="list-inline ratingdate text-left">
+					{{Question2}}
+				</span>
+            </td>
+            <td style="width:25%">
+                <ul class="list-inline reviewstar">
+                    <li ng-repeat="ser in rdServiceRating">
+                        <span class="{{ser.star}}"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="rdCleannessRating">
+            <td style="width:20%"><img src="../images/chevron_logo.png" style="background-color:#fff;padding:5px;"></td>
+            <td class="qtd">
+                <span class="list-inline ratingdate text-left">
+					{{Question3}}
+				</span>
+            </td>
+            <td style="width:25%">
+                <ul class="list-inline reviewstar">
+                    <li ng-repeat="c in rdCleannessRating">
+                        <span class="{{c.star}}"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <div class="clearfix"></div>
+    <div class="scrollingDivWrapper">
+        <div class="col-md-12 hidden-scrollbar">
+            <div class="inner">
+                <div class="" ng-repeat="rc in reviewComment">
+                    <div ng-show="rc.createdBy != loginuser" class="row msg_container base_receive">
+                        <div class="col-xs-2 col-md-2 avatar avatar-psition">
+                            <img ng-src="{{profileImage}}" class="img-responsive avatar-rounded" />
+                        </div>
+                        <div class="col-xs-8 col-md-8  no-padding-LFRG top-next">
+                            <div class="messages msg_receive">
+                                <p>{{rc.description}}
+                                    <img ng-if="rc.commentWithImage != null" ng-src="{{rc.commentWithImage}}" />
+                                </p>
+                                <span>{{rc.createdAt | date : 'MMM dd' }} , {{rc.createdAt | date :'hh:mm a'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="rc.createdBy == loginuser" class="row msg_container base_sent">
+                        <div class="col-xs-8 col-md-8  no-padding-LFRG top-prev">
+                            <div class="messages msg_receive">
+                                <p>{{rc.description}}
+                                    <img ng-if="rc.commentWithImage != null" ng-src="{{rc.commentWithImage}}" />
+                                </p>
+                                <span>{{rc.createdAt | date : 'MMM dd' }} , {{rc.createdAt | date :'hh:mm a'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12 footer chat-text-box">
+        <form class="form-inline">
+            <div class="col-xs-2 col-sm-1">
+                <div ng-model="profileImageFromDB" ngf-select="Send($file, $invalidFile)" class="drop-box" accept="image/*" ngf-drag-over-class="'dragover'" ngf-capture="camera" ngf-resize="{width: 400, height: 600}" ngf-resize-if="$width > 400 || $height > 600">
+                    <a class="btn-edit-image red-tooltip" ng-click="$event.preventDefault();" tooltip-placement="top" uib-tooltip="Only GIF, JPG, JPEG and PNG are allowed!">
+                        <span name="uploadPicture" class="glyphicon glyphicon-camera"></span></a>
+                </div>
+            </div>
+            <div class="col-xs-7 col-sm-9 no-padding-LFRG ">
+                <input type="text" name="reviewComment" class="form-control" ng-model="ReviewCommt" placeholder="Type a comment..." />
+            </div>
+            <div class="col-xs-3 col-sm-2">
+                <input name="SEND" type="button" ng-class="{btnActive: ReviewCommt != ''}" class="form-control" ng-click="Send('text', null);" ng-disabled="ReviewCommt == '' || isNewComment" value="SEND" />
+            </div>
+        </form>
+    </div>
+</div>

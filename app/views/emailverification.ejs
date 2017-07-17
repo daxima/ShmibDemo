@@ -1,0 +1,31 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/authentication.css">
+    </head>
+
+    <body ng-app="shmib" ng-controller="emailVerification" class="signup primary-bg">
+
+        <div class="container">
+            <div ui-view class="signup-parent"></div>
+        </div>
+        <div class="bottom-footer"><a ng-click="$event.preventDefault();showTermsPopUp()">Terms of Use &amp; Privacy Policy</a>
+            <%- version %>
+        </div>
+        </div>
+
+        <script>
+            var tuid = <%- JSON.stringify(tuid) %>;
+
+        </script>
+        <% include partials/jsfiles.ejs%>
+            <% // include file specific js files here %>
+                <script type="text/javascript" src="/js/routes/emailVerification.routes.js"></script>
+                <script type="text/javascript" src="/js/services/api.client.services.js"></script>
+                <script type="text/javascript" src="/js/directives/modal.control.directive.js"></script>
+                <script type="text/javascript" src="/js/controllers/emailVerification.client.controller.js"></script>
+                <script type="text/javascript" src="/js/controllers/businessRegistration.client.controller.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+                <script type="text/javascript" src="/js/controllers/terms.modal.client.controller.js"></script>
+    </body>
+
+
+    </html>

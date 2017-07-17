@@ -1,0 +1,169 @@
+<style>
+    .rHeaderName {
+        margin-top: 0;
+        word-break: break-all;
+    }
+    
+    .Question {
+        font-size: 11px;
+    }
+    
+    table.reviewDetailsTable {
+        width: 100%;
+    }
+    
+    table.reviewDetailsTable tr {
+        display: table;
+        width: 100%;
+        height: 80px;
+    }
+    
+    table.reviewDetailsTable tr td {
+        text-align: center;
+        vertical-align: middle;
+        color: #fff;
+    }
+    
+    table.reviewDetailsTable tr td.qtd {
+        width: 55%;
+        padding: 0 15px;
+    }
+    
+    table.reviewDetailsTable tr td img {
+        max-height: 50px;
+        max-width: 70px;
+    }
+    
+    table.reviewDetailsTable tr td ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    table.reviewDetailsTable tr td ul li {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+</style>
+<div class="reviewDetailsOverlay">
+    <a href="/home/review/list/{{companyId}}" class="close_custom"></a>
+    <div class="reviewDetailsWrapper">
+        <div class="reviewDetails">
+
+            <div class="loaderWrapper" ng-show="isLoading">
+                <span class="customLoader">
+                    <div class="uil-ring-css" style='transform:scale(0.65);'>
+                        <div></div>
+                    </div>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 reviewDetail">
+                    <div class="rdHeader">
+                        <h2 class="rHeaderName">
+                            <span tooltip-placement="bottom" uib-tooltip="{{Name}}">{{displayName}}</span></h2>
+                        <span>{{Review.createdAt |  date : 'MMM dd, yyyy' }} at  {{Review.createdAt | date :'hh:mm a'}}</span>
+                        <br/>
+                        <span>Total Shmibs for User: {{totalReviewCount == null ? 0 : totalReviewCount}}</span>
+                        <br/>
+                        <span>Total Shmibs for Business: {{reviewCount == null ? 0 : reviewCount}}</span>
+                        <br/>
+                        <span>Average Rating:</span>
+                        <br/>
+                        <span ng-repeat="s in avgStarReview">
+                   			<span class="{{s.star}}"></span>
+                        </span>&nbsp;
+
+                    </div>
+                    <table class="reviewDetailsTable">
+                        <tr class="rdFoodRating">
+                            <td style="width:20%"><img src="../images/shmib_icon_plain.png"></td>
+                            <td class="qtd">
+                                <span class="list-inline ratingdate text-left">
+                                    {{Question1}}
+                                </span>
+                            </td>
+                            <td style="width:25%">
+                                <ul class="list-inline reviewstar">
+                                    <li ng-repeat="f in rdFoodRating">
+                                        <span class="{{f.star}}"></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="rdServiceRating">
+                            <td style="width:20%"><img src="../images/shmib_icon_plain.png"></td>
+                            <td class="qtd">
+                                <span class="list-inline ratingdate text-left">
+                                    {{Question2}}
+                                </span>
+                            </td>
+                            <td style="width:25%">
+                                <ul class="list-inline reviewstar">
+                                    <li ng-repeat="ser in rdServiceRating">
+                                        <span class="{{ser.star}}"></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="rdCleannessRating">
+                            <td style="width:20%"><img src="../images/shmib_icon_plain.png"></td>
+                            <td class="qtd">
+                                <span class="list-inline ratingdate text-left">
+                                    {{Question3}}
+                                </span>
+                            </td>
+                            <td style="width:25%">
+                                <ul class="list-inline reviewstar">
+                                    <li ng-repeat="c in rdCleannessRating">
+                                        <span class="{{c.star}}"></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                    <div class="commentWrapper">
+                        <div class="comments">
+                            <div class="chat">
+                                <ul ng-repeat="rc in reviewComment">
+                                    <li ng-show="rc.createdBy == loginuser && cType=='COMPANY' " class="self">
+                                        <div class="avatar"><img ng-src="{{profileImage}}" draggable="false" /></div>
+                                        <div class="msg">
+                                            <p>{{rc.description}}
+                                                <img ng-if="rc.commentWithImage != null" ng-src="{{rc.commentWithImage}}" />
+                                            </p>
+                                            <time>{{rc.createdAt | date : 'MMM dd' }},{{rc.createdAt | date :'hh:mm a'}}</time>
+                                        </div>
+                                    </li>
+                                    <li ng-show="rc.createdBy != loginuser" class="other">
+                                        <div class="msg">
+                                            <p>{{rc.description}}
+                                                <img ng-if="rc.commentWithImage != null" ng-src="{{rc.commentWithImage}}" />
+                                            </p>
+                                            <time>{{rc.createdAt | date : 'MMM dd' }}, {{rc.createdAt | date :'hh:mm a'}}</time>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="commentForm">
+
+                            <div class="col-xs-10">
+                                <input type="text" name="comment" class="ttext top-margin-20" ng-model="Comment" placeholder="Type a comment..." />
+                            </div>
+                            <div class="col-xs-2 text-center">
+
+                                <button type="submit" name="submit" ng-class="{btnActive: Comment != ''}" class="tbtn top-margin-20 " ng-disabled="Comment == '' || isNewComment" ng-click="Send()">SEND</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

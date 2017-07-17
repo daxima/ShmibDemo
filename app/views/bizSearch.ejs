@@ -1,0 +1,26 @@
+<% include partials/header.ejs%>
+ <% // include file specific css files here %>
+ <link type="text/css" rel="stylesheet" media="all" href="../css/ionicons.css">
+ <link type="text/css" rel="stylesheet" media="all" href="../css/style.css">
+ <link type="text/css" rel="stylesheet" media="all" href="../css/profile.css">
+
+</head>
+
+<body ng-app="shmib" id="ratenum">
+	<div id="form-container" class="container-fluid text-center" ng-controller="bizSearchCtrl"  ui-view>
+	</div>
+	
+	<script>
+        window.scrollTo(0, 1);
+		var user = <%- JSON.stringify(user) %>;
+    </script>
+
+        <% include partials/jsfiles.ejs%>
+        <% // include file specific js files here %>
+        <script type="text/javascript" src="/js/routes/bizSearch.routes.js"></script>
+        <script type="text/javascript" src="/js/controllers/bizSearch.client.controller.js"></script>
+		<script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+		<script type="text/javascript" src="/js/controllers/installapp.modal.client.controller.js"></script>
+</body>
+
+</html>

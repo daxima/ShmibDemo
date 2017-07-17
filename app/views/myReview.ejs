@@ -1,0 +1,29 @@
+<% include partials/header.ejs%>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" media="all" href="../css/review.css">
+    <% // include file specific css files here %>
+        </head>
+
+        <body id="ratenum" ng-app="shmib" ng-controller="MyreviewsCtrl" class="">
+            <div class="mainContainer">
+                <% include partials/topbarReviewer.ejs %>
+                    <div class="topBarHeading">
+                        Your Shmibs
+                    </div>
+
+            </div>
+            <div id="form-container" class="container-fluid text-center" ui-view></div>
+
+            <script>
+                var user = <%- JSON.stringify(user) %>;
+
+            </script>
+
+            <% include partials/jsfiles.ejs%>
+
+                <script type="text/javascript" src="/js/routes/myReview.routes.js"></script>
+                <script type="text/javascript" src="/js/controllers/myReview.client.controller.js"></script>
+                <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+        </body>
+
+        </html>

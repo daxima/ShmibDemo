@@ -1,0 +1,27 @@
+<div id="topBar">
+    <nav class="navbar navbar-default primary-bg" style="margin: 0px;">
+        <div class="container-fluid">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li name="bizDropDown" class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{Name}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-show="isBizContact" href="/home/review/list">My Business Account</a></li>
+                            <li><a href="/me/profile">Profile</a></li>
+                            <li><a name="signOut" href="/auth/logout">Sign Out</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>

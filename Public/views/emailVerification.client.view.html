@@ -1,0 +1,43 @@
+<style>
+    .container-emailverify .glyphicon {
+        font-size: 75px;
+        color: #F66C66;
+        margin:10px 0;
+    }
+    
+    .container-emailverify .profile .profile__form {
+        padding-top: 0px;
+    }
+    
+    .container-emailverify .profile .btn,
+    .container-emailverify .profile .white-button {
+        padding: 6px 16px;
+    }
+
+</style>
+<div class="mainContainer">
+    <div class="topbar">
+        <div class="col-sm-2 pull-left">
+            <div id="company-logo">
+                <a ng-click="$event.preventDefault();gotoLogin()"><img src="/images/logo.png" alt="Shmib" /></a>
+            </div>
+        </div>
+    </div>
+<div class="container-emailverify" style="top:50%">
+    <div class="profile">
+        <h2 class="light-gray" style="text-align: center;padding-left:0;">Email Verification</h2>
+        <div class="profile__form">
+            <div class="profile__fields" style="text-align: center;">
+                <i class="glyphicon glyphicon-refresh" ng-show="statusb == 1"></i>
+                <i class="glyphicon glyphicon-ok-circle" ng-show="statusb == 2"></i>
+                <i class="glyphicon glyphicon-warning-sign" ng-show="statusb == 3"></i>
+                <br>
+                <h4>{{status}}</h4>
+                <br>
+
+                <a class="btn primary-bg" href="/me/review/list" ng-show="contacttype == 'REVIEWER'">Go to My Shmibs</a>
+                <a class="btn primary-bg" href="/auth/login/biz" ng-show="contacttype == 'COMPANY'">Add a Business</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<modal>
+    <div class="modal-header alertBox " style="text-align:center;border-bottom:none;">
+        <button type="button" class="close" ng-click="cancel()">&times;</button>
+        <h4 class="text-center">{{title}}</h4>
+    </div>
+    <div class="modal-body alertBox">
+        <div style="text-align: center;">
+            <p>{{message}}</p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="modal-footer resetButton alertBox" style="text-align: center;">
+        <button class="btn btn-done" type="button" ng-click="cancel()" ng-if="showCancel">Cancel</button>
+        <button class="btn btn-done" type="button" ng-click="ok()">OK</button>
+    </div>
+</modal>

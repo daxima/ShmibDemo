@@ -1,0 +1,42 @@
+<% include partials/header.ejs%>
+    <link type="text/css" rel="stylesheet" media="all" href="/css/authentication.css">
+    </head>
+
+    <body ng-app="shmib" ng-controller="signinuser" class="signin primary-bg">
+
+        <div class="mainContainer">
+            <div class="topbar">
+                <div class="col-xs-5 col-sm-4">
+                    <div id="company-logo">
+                        <a href="/auth/login"><img src="/images/logo.png" alt="Shmib" /></a>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-sm-8">
+                    <div class="signupMessage">
+                        Not a Shmib member yet? <a href="/help/signup">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div ui-view></div>
+            </div>
+            <div class="bottom-footer"><a ng-click="$event.preventDefault();showTermsPopUp()">Terms of Use &amp; Privacy Policy </a>
+                <%- version %>
+            </div>
+        </div>
+        <script>
+            var flashMessage = <%- JSON.stringify(flashmessage) %>;
+
+        </script>
+
+        <% include partials/jsfiles.ejs%>
+
+            <script type="text/javascript" src="/js/routes/signinUser.routes.js"></script>
+            <script type="text/javascript" src="/js/controllers/signinUser.client.controller.js"></script>
+            <script type="text/javascript" src="/js/controllers/fp.modal.instance.controller.js"></script>
+            <script type="text/javascript" src="/js/services/signing.client.services.js"></script>
+            <script type="text/javascript" src="/js/controllers/terms.modal.client.controller.js"></script>
+            <script type="text/javascript" src="/js/controllers/installapp.modal.client.controller.js"></script>
+    </body>
+
+    </html>

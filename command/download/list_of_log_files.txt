@@ -1,0 +1,6 @@
+[List of log file names]
+
+Note: These files has rotating file number in the name and they can be large, 50+MB.
+
+shmib-error-0.log
+shmib-out-0.log

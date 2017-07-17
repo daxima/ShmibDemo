@@ -1,0 +1,213 @@
+<style>
+    #ratenum-10 input[type="text"],
+    #ratenum-10 .trans,
+    #ratenum-10 label {
+        padding: 3px 10px !important;
+    }
+    
+    .containerdiv {
+        float: none;
+        margin: 0 auto;
+        width: 295px;
+        position: relative;
+    }
+    
+    .img-responsive {
+        margin-top: 10%;
+        height: auto !important;
+    }
+    
+    .trans {
+        width: 96%;
+        color: #fff;
+    }
+    
+    .divControl {
+        margin-top: 20px;
+        position: relative;
+    }
+    
+    .phoneNumberDisplay {
+        display: inline-block;
+        width: 96%;
+    }
+    
+    .gray {
+        text-align: left;
+        font-weight: normal;
+        margin: 1px 0 0 0px;
+        font-size: 10px;
+        color: #fff;
+    }
+    
+    .signUpHeader {
+        margin-top: 4%;
+        color: #fdd7d0;
+    }
+    
+    .PasswordAgre {
+        color: #fdd7d0;
+    }
+    
+    .review-error {
+        left: 0px !important;
+        padding-left: 0px !important;
+    }
+    
+    .phHelpText {
+        font-style: italic;
+    }
+    
+    .divFirstName {
+        width: 48%;
+        margin-right: 11px;
+        position: relative;
+        float: left;
+    }
+    
+    .divLastName {
+        width: 48%;
+        position: relative;
+        float: left;
+    }
+    
+    #ratenum-10 input[type='text'].trans::-webkit-input-placeholder {
+        color: lightgrey;
+    }
+    
+    #ratenum-10 input[type='text'].trans::-webkit-input-placeholder {
+        color: lightgrey;
+    }
+    
+    #ratenum-10 input[type='text'].trans::-moz-placeholder {
+        color: lightgrey;
+    }
+    
+    #ratenum-10 input[type='text'].trans:-ms-input-placeholder {
+        color: lightgrey;
+    }
+    
+    #ratenum-10 input[type='text'].trans:-moz-placeholder {
+        color: lightgrey;
+    }
+    
+    @media screen and (max-width: 767px) {
+        .review-error {
+            left: 0px !important;
+        }
+        #form-views {
+            position: relative;
+        }
+    }
+    
+    @media screen and (max-width: 550px) {}
+
+</style>
+
+<div id="ratenum" class="text-center ">
+    <div id="form-container" class="text-center">
+        <div id="form-views">
+            <div class="container">
+                <div style="float:none;margin:0 auto;width: 295px;position: relative;">
+                    <div id="ratenum-10" class="text-center ng-scope">
+                        <div class="row"> <img src="images/logo.png" style="margin-top: 5%; height:100px;" class="img-responsive" /> </div>
+                        <h3>Thanks for your Shmib!</h3>
+                        <p style="margin-top: 3%;" class="text-center"> Shmib helps businesses in your
+                            <br> community to get better. Create a password
+                            <br> to track your shmibs.</p>
+
+
+                        <div class="formWrapper" ng-hide="allDone==true">
+                            <div class="divControl">
+                                <div class="divFirstName">
+                                    <input id="Fname" name="Fname" type="text" ng-model="registrationForm.firstname" placeholder="First Name" class="trans" style="width:100%" focus-me="isFocused" required />
+                                    <div class="clearfix"></div>
+                                    <span class="field-message review-error" ng-show="isEmptyfirstname">
+                                Please enter first name.
+                            </span>
+                                </div>
+                                <div class="divLastName">
+                                    <input id="Lname" name="Lname" type="text" ng-model="registrationForm.lastname" placeholder="Last Name" class="trans" style="width:100%" required />
+                                    <div class="clearfix"></div>
+                                    <span class="field-message review-error" ng-show="isEmptylastname">
+                                Please enter last name.
+                            </span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="divControl">
+                                <input id="email" name="email" type="text" ng-model="registrationForm.email" ng-change="CheckEmail(registrationForm.email);" placeholder="Email" class="trans" style="width:100%" ng-blur="UniqueEmail(registrationForm.email)" ng-focus="resetEmail()" required />
+
+                                <div class="clearfix"></div>
+                                <span class="field-message review-error" ng-show="isEmpty==true">
+                            Email is required. </span>
+                                <span class="field-message review-error" ng-show="isPattern==true">
+                            Email is not valid. </span>
+                                <span class="field-message review-error" ng-show="emailFailed == true && isEmpty!=true && isPattern!=true">
+                            Email is already in use. </span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="divControl">
+                                <input name="password" ng-change="CheckPassword(registrationForm.password);" type="password" ng-model="registrationForm.password" placeholder="Create Password" ng-focus="resetPass()" maxlength="20" class="trans" style="width:100%;color:#ffffff;" required>
+
+                                <span class="unique-message" ng-show="isEmptyPassword==false && isPatternPassword==true && isLengthPassword==false">
+                            Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.) </span>
+                                <span class="field-message review-error" ng-show="isPatternPassword==false && isEmptyPassword==true &&
+                            isLengthPassword==false">
+                            Password is required.</span>
+                                <span class="field-message review-error" ng-show="isPatternPassword==false && isEmptyPassword==false &&
+                            isLengthPassword==true">
+                            Password must be between 8 and 20 characters.</span>
+                            </div>
+
+                            <div class="divControl">
+                                <input name="confirmPassword" type="password" ng-model="registrationForm.confirmPassword" placeholder="Confirm Password" maxlength="20" class="trans" style="width:100%;color:#ffffff;" required>
+
+                                <span class="field-message review-error" ng-show="isEmptyConfirmPassword">
+                            Confirm password is required.</span>
+                                <span class="field-message review-error" ng-show="passwordMismatch">
+                                        <span class="errorMsg">Passwords do not match.</span>
+                                </span>
+                            </div>
+
+                            <div class="divControl">
+
+
+                                <input type="text" id="phoneNumber" class="input trans phoneNumberDisplay" ng-model="registrationForm.phoneNumber" name="phoneNumber" ng-blur="checkPhoneNumber(registrationForm.phoneNumber,registrationForm.phoneNumber.length)" ng-focus="resetPhoneNumber()" style="display: inline-block;width:100%;" ui-mask="(999) 999 9999" ui-options="{clearOnBlur: false}" />
+                                <h6 class="gray phHelpText">Personal Phone Number</h6>
+
+                                <div ng-hide="registrationForm.phoneNumber.$viewValue.length == 0">
+                                    <span class="field-message review-error" ng-show="phoneNumberFailed">
+                                        Phone number must be 10 digits.</span>
+                                </div>
+
+                            </div>
+
+                            <div class="divControl">
+                                <input name="CREATE" ng-disabled="emailFailed || phoneNumberFailed || isPattern || isEmpty " type="button" value="create account" ng-click="afterReviewSignup(registrationForm.$valid);">
+                            </div>
+                        </div>
+                        <div ng-show="allDone==true">
+                            <div class="loader">Loading...</div>
+                        </div>
+                        <br/>
+
+                        <p class="text-center"> <span style="color:#fdd7d0;">
+                    By creating a password, you agree to our</span>
+                            <br>
+                            <a ng-click="$event.preventDefault();showTermsPopUp()">Terms of Use &amp; Privacy Policy</a> {{version}}</p>
+                        <div class="margin-top_10 margin-bottom_20 text-center radio-toolbar">
+
+                            <span style="margin-top: 4%; color:#fdd7d0;" class="text-center"> Not yet ready to sign up!</span>
+
+                            <a ng-if="allDone==false" ng-click="ChangeState('next')">
+                                <span class="txt-upper" style="float:center!important;">SKIP</span></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

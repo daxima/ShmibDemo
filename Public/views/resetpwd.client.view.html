@@ -1,0 +1,105 @@
+<style>
+    .profile .profile__form {
+        padding: 10px 30px;
+    }
+    
+    .profile__form .profile__fields .field {
+        margin-bottom: 28px;
+    }
+    
+    .profile h2 {
+        padding-left: 28px;
+    }
+    
+    .errorMsg {
+        position: absolute;
+        left: 0px;
+        top: 35px;
+    }
+    
+    .errorImg {
+        position: absolute;
+        right: 0;
+        top: -3px;
+    }
+    
+    .userMessage {
+        text-align: center;
+        padding: 80px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .succ-message {
+        display: block;
+        margin-top: -15px;
+    }
+
+</style>
+<div ui-view class="view-animate"></div>
+<!--<div ng-if="!signedUp">-->
+<div class="container-login" style="top:50%">
+    <div class="userMessage" ng-show="linkExpired">
+        <span>
+            <img src="../images/icon-warning.svg" /><br/><br/> The page that you are trying to reach has been expired.
+        </span>
+    </div>
+    <div ng-show="!linkExpired">
+
+        <div class="profile">
+            <h2 class="light-gray">Reset Password</h2>
+
+            <form role="form" name="resetpwdForm" novalidate>
+                <div class="profile__form">
+                    <div class="profile__fields">
+
+                        <div class="field">
+                            <input class="input" type="password" name="password" placeholder="New Password" ng-model="password" name="password" ng-minlength="8" ng-maxlength="20" ng-pattern="passwPattern" autocomplete="false" required />
+
+                            <span class="err-critical" ng-show="resetPwdvalid && resetpwdForm.password.$error.required">
+						<img src="../images/failSmallBlue.gif" class="errorImg" />
+                            <span class="errorMsg">Password is required.</span>
+                            </span>
+
+                            <span class="err-critical" ng-show="!resetpwdForm.password.$error.required && (resetpwdForm.password.$error.minlength || resetpwdForm.password.$error.maxlength) && resetpwdForm.password.$dirty"><span class="errorMsg">Passwords must be between 8 and 20 characters.</span>
+                            </span>
+                            <span class="err-critical" ng-show="!resetpwdForm.password.$error.required && !resetpwdForm.password.$error.minlength && !resetpwdForm.password.$error.maxlength && resetpwdForm.password.$error.pattern && resetpwdForm.password.$dirty"><span class="errorMsg">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+                            </span>
+                        </div>
+
+                        <div class="field">
+                            <input class="input" type="password" name="passwordConfirmation" placeholder="Confirm Password" ng-model="passwordConfirmation" password-confirm match-target="password" ng-minlength="8" ng-maxlength="20" autocomplete="false" ng-pattern="passwPattern" required passwordConfirm/>
+
+                            <span ng-show="resetPwdvalid &&  resetpwdForm.passwordConfirmation.$error.required">
+                                <span class="err-critical">
+								<img src="../images/failSmallBlue.gif" class="errorImg"/> 
+                                <span class="errorMsg">Confirm password is required.</span>
+                            </span>
+                            </span>
+                            <br/>
+                            <span class="err-critical" ng-show="!resetpwdForm.passwordConfirmation.$error.required && (resetpwdForm.passwordConfirmation.$error.minlength || resetpwdForm.passwordConfirmation.$error.maxlength) && resetpwdForm.passwordConfirmation.$dirty">
+                                <span class="errorMsg">Passwords must be between 8 and 20 characters.</span>
+                            </span>
+                            <span class="err-critical" ng-show="!resetpwdForm.passwordConfirmation.$error.required && !resetpwdForm.passwordConfirmation.$error.minlength && !resetpwdForm.passwordConfirmation.$error.maxlength && resetpwdForm.passwordConfirmation.$error.pattern && resetpwdForm.passwordConfirmation.$dirty"><span class="errorMsg">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+                            </span>
+                            <span class="err-critical" ng-show="resetPwdvalid &&
+                                  !resetpwdForm.passwordConfirmation.$error.required && !resetpwdForm.passwordConfirmation.$error.minlength && !resetpwdForm.passwordConfirmation.$error.maxlength && !resetpwdForm.passwordConfirmation.$error.pattern && resetpwdForm.passwordConfirmation.$dirty && resetpwdForm.passwordConfirmation.$error.match">
+                                <img src="../images/failSmallBlue.gif" class="errorImg"/> 
+                                <span class="errorMsg">Passwords do not match.</span>
+                            </span>
+                        </div>
+
+                        <div ng-show="resMessage">
+                            <span ng-class="{'succ-message': isSuccess, 'err-critical': !isSuccess}">{{resMessageContent}}</span>
+                        </div>
+
+                        <div class="profile__footer">
+                            <button class="btn" ng-click="resetpwdnow(password, passwordConfirmation)">RESET</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

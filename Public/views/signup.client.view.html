@@ -1,0 +1,199 @@
+<style>
+    .profile__form .profile__fields .field {
+        margin-bottom: 18px;
+    }
+    
+    .signup-loading {
+        position: absolute;
+        left: 0;
+    }
+    
+    .divFirstName {
+        display: inline-block;
+        width: 47%;
+        margin-right: 12px;
+        position: relative;
+    }
+    
+    .divLastName {
+        display: inline-block;
+        width: 48%;
+        position: relative;
+    }
+    
+    .grayPhoneNumber {
+        font-weight: normal;
+        margin-top: 1px;
+        font-size: 11px !important;
+        color: #636463;
+        font-style: italic;
+        font-weight: normal !important;
+    }
+    
+    .termsCondation {
+        padding-left: 0px;
+        text-align: left !important;
+    }
+    
+    .errorMsg {
+        position: absolute;
+        left: 0px;
+        top: 42px;
+        margin-top: 0px;
+        display: block;
+    }
+    
+    .errorImg {
+        position: absolute;
+        right: 0;
+        top: 3px;
+    }
+    
+    @media (max-width: 414px) and ( max-height: 550px) {
+        .bottom-footer {
+            position: relative;
+            clear: both;
+            float: left;
+            margin-top: 30px;
+        }
+    }
+
+</style>
+<div ui-view class="view-animate"></div>
+<div class="topbar" ng-if="signupUser==null">
+    <div class="col-xs-5 col-sm-4">
+        <div id="company-logo">
+            <a href="/auth/login/biz"><img src="/images/logo.png" alt="Shmib" /></a>
+        </div>
+    </div>
+    <div class="col-xs-7 col-sm-8">
+        <div class="signupMessage">
+            <span ng-if="signupUser==null">Already a member? </span> <a ng-if="signupUser==null" href="/auth/login/biz">Sign In</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="signup-parent">
+        <div ng-if="!signedUp">
+
+            <div class="container-signup">
+
+                <div class="profile">
+                    <h2 class="gray">Sign Up</h2>
+                    <form name="signupForm" autocomplete="off" novalidate>
+                        <div class="profile__form">
+                            <div class="profile__fields">
+
+                                <div class="field" style="margin-bottom:20px;">
+                                    <div class="divFirstName">
+                                        <input type="text" id="firstName " placeholder="First Name" class="input" ng-model="signup.firstName" name="firstName" autocomplete="false" required />
+                                        <span class="signup-loading err-critical" ng-show="signupFormValid && signupForm.firstName.$error.required"><span class="errorMsg">First name is required.</span><img src="images/failSmallBlue.gif" tooltip-placement="top" uib-tooltip="First name is required!" class="red-tooltip errorImg" /></span>
+                                    </div>
+                                    <div class="divLastName">
+                                        <input type="text" id="lastName " placeholder="Last Name" class="input" ng-model="signup.lastName" name="lastName" autocomplete="false" required />
+                                        <span class="signup-loading err-critical" ng-show="signupFormValid && signupForm.lastName.$error.required"><span class="errorMsg">Last name is required.</span><img src="images/failSmallBlue.gif" tooltip-placement="top" uib-tooltip="Last name is required!" class="red-tooltip errorImg" /></span>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="field">
+                                    <input type="text" id="username " placeholder="Email" class="input" ng-model="signup.emailAddress" name="emailAddress" ng-pattern="emailPattern" ng-blur="checkEmail(signup.emailAddress)" ng-focus="resetEmail()" autocomplete="false" required />
+
+                                    <span class="signup-loading err-critical" ng-hide="signupForm.emailAddress.$error.pattern==true" ng-if="emailAccepted">
+                                <img src="images/spinnerCheckSmall.gif?random={{randomNum.email}}" class="errorImg" />
+                            </span>
+
+                                    <span class="signup-loading err-critical" ng-if="emailFailed">
+                                <img src="images/failSmallBlue.gif?random={{randomNum.email}}" class="errorImg" />
+                            </span>
+
+                                    <span class="signup-loading err-critical" ng-if="emailLoading">
+                                <img src="images/loadingSpinnerSmall.gif?random={{randomNum.email}}" class="errorImg" />
+                            </span>
+
+                                    <span class="signup-loading err-critical" ng-show="signupFormValid && ( signupForm.emailAddress.$error.required)">
+                                <span class="errorMsg">Email is required.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Email is required!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                    <span class="signup-loading err-critical" ng-show="duplicateEmail==true">
+                                <span class="errorMsg">Email is already in use.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Email is already in use!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                    <span class="signup-loading err-critical" ng-show="signupForm.emailAddress.$error.pattern==true">
+                                <span class="errorMsg">Email is not valid.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Email is not valid!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                </div>
+
+                                <div class="field">
+
+                                    <input type="text" id="phoneNumber" class="input" ng-model="signup.phoneNumber" name="phoneNumber" style="display: inline-block;" ui-mask="(999) 999 9999" ui-options="{clearOnBlur: false}" ng-blur="checkPhoneNumber(signup.phoneNumber,signup.phoneNumber.length)" ng-focus="resetPhoneNumber()" autocomplete="false" />
+                                    <span class="gray grayPhoneNumber">
+							   Personal Phone Number</span>
+
+                                    <div ng-hide="signupForm.phoneNumber.$viewValue.length == 0">
+                                        <span class="signup-loading err-critical" ng-show="phoneNumberFailed==true">
+								        <span class="errorMsg" style="top:62px;">Phone number must be 10 digits.</span>
+                                        <img src="images/failSmallBlue.gif?random={{randomNum.phoneNumber}}" tooltip-placement="left" uib-tooltip="Phone number must be 10 digits!" class="red-tooltip errorImg" />
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="field" style="margin-bottom: 20px;">
+                                    <input type="password" id="upassword" placeholder="Create Password" class="input" ng-model="signup.password" name="password" ng-minlength="8" ng-maxlength="20" ng-pattern="passwPattern" autocomplete="false" required />
+
+                                    <span class="signup-loading err-critical" ng-show="signupFormValid && ( signupForm.password.$error.required)">
+                                <span class="errorMsg">Password is required.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Password is required!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                    <span class="signup-loading err-critical" ng-show="!signupForm.password.$error.required && (signupForm.password.$error.minlength || signupForm.password.$error.maxlength) && signupForm.password.$dirty">
+                                <span class="errorMsg">Passwords must be between 8 and 20 characters.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Password is not valid!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                    <span class="signup-loading err-critical" ng-show="!signupForm.password.$error.required && !signupForm.password.$error.minlength && !signupForm.password.$error.maxlength && signupForm.password.$error.pattern && signupForm.password.$dirty">
+                                <span class="errorMsg">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Password is not valid!" class="red-tooltip errorImg" />
+                                    </span>
+                                </div>
+
+                                <div class="field" style="margin-bottom: 35px;">
+                                    <input type="password" name="confirmPassword" placeholder="Confirm Password" class="input" ng-model="signup.confirmPassword" ng-minlength="8" ng-maxlength="20" ng-pattern="passwPattern" password-confirm match-target="signup.password" autocomplete="false" required />
+
+
+                                    <span class="signup-loading err-critical" ng-show="signupFormValid && ( signupForm.confirmPassword.$error.required)">
+                                        <span class="errorMsg">Confirm password is required.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Confirm password is required!" class="red-tooltip  errorImg" />
+                                    </span>
+
+                                    <span class=" signup-loading err-critical" ng-show="!signupForm.confirmPassword.$error.required && (signupForm.confirmPassword.$viewValue != signupForm.password.$viewValue)">
+                                        <span class="errorMsg">Passwords do not match.</span>
+                                    <img src="images/failSmallBlue.gif" tooltip-placement="left" uib-tooltip="Passwords do not match!" class="red-tooltip errorImg" />
+                                    </span>
+
+                                </div>
+                                <div class="field margin-0">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" ng-model="signup.agreeTerms" autocomplete="false" required />
+                                    <label class="terms-condition" for="agreeTerms">I agree to Shmib terms &amp; conditions</label>
+                                    <span class="field-message termsCondation" ng-show="signupFormValid && signupForm.agreeTerms.$error.required">You must agree to Shmib terms &amp; conditions </span>
+                                </div>
+                                <div class="profile__footer" style="margin-top:2em;">
+                                    <button class="btn" ng-click="account(signup, signupForm.$valid)">CREATE ACCOUNT
+                                        <span ng-show="spinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="bottom-footer" style="padding:8px 0px 0px 0px;"><a ng-click="$event.preventDefault();showTermsPopUp()">Terms of Use &amp; Privacy Policy</a> {{version}}</div>

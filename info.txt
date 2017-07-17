@@ -1,0 +1,8 @@
+[How to setup Node.js app on Ubuntu]
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
+
+[How to setup grunt to deploy the code]
+http://tech.opentable.co.uk/blog/2013/08/08/grunt-your-deployments-too/
+
+[PM2 process monitoring]
+http://pm2.keymetrics.io/

@@ -1,0 +1,35 @@
+<style>
+    .iconeDone{
+        height: 90px;
+        display: inline;
+    }
+</style>
+<div id="ratenum-8" class="text-center bg-padding ">
+    <!---Page Icon Here--->
+    <img src="images/icon_done.png" class="img-responsive margin-top_50 iconeDone" />
+
+
+    <!---Page Title Here--->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center margin-top_10">All Done!</h3>
+            <h5 class="margin-top_50">Thanks for submitting your feedback.<br/>We will try to make improvements based on what we heard and looking forward to seeing you soon.</h5>
+        </div>
+    </div>
+    <div class="row margin-top_40">
+        <input name="submit" type="button" value="CONTINUE SHMIBBING" class="submit-button cst-btns" ng-click="doneFeedback()">
+    </div>
+
+    <!---Page Icon Here--->
+    <div class="row" ng-show="isRegisteredUser">
+        <div class="col-md-12 margin-top_50 margin-bottom_200">
+            <ul class="review-menu">
+                <a name="yourShmibs" class="wht-color" href="/me/review/list">
+                    <li>
+                        <img src="images/logo.png" class="icon-width" /> Your Shmibs
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>
