@@ -67,7 +67,7 @@
                     </div>
                 </span>
             </div>
-            <div ngf-select="initFiles($file, $invalidFile)" ng-model="cForm.ufile" class="drop-box1" accept="image/*" ngf-drag-over-class="'dragover'" ngf-capture="camera" ngf-resize="{width: 400, height: 600}" ngf-resize-if="$width > 400 || $height > 600">
+            <div ngf-select="initFiles($file, $invalidFile)" ng-model="cForm.ufile" class="drop-box1" accept="image/*" ngf-drag-over-class="'dragover'" ngf-capture="camera" ngf-resize="{width: 400, height: 600}" ngf-resize-if="$width > 400 || $height > 600" ngf-fix-orientation="true">
                 <div class="img-error-msg" ng-show="isUnSupportedType">Unsupported file format!!! (Only GIF, JPG, JPEG and PNG are allowed)</div>
                 <a class="btn-edit-image red-tooltip" ng-click="$event.preventDefault();" tooltip-placement="right" uib-tooltip="Only GIF, JPG, JPEG and PNG are allowed!">
                     <span name="uploadPicture" class="glyphicon glyphicon-camera"></span></a>
