@@ -219,6 +219,15 @@ var api_add = function (req, res) {
                     });
                 })
                 .then(function () {
+                    return model.company.update({
+                        urlName: cmpId
+                    }, {
+                        where: {
+                            id: cmpId
+                        }
+                    });
+                })
+                .then(function () {
                     res.json({
                         status: 'Business added successfully!',
                         company: cmpId
@@ -305,19 +314,19 @@ var api_update = function (req, res) {
             vmodel.customLabelObj = req.body.customLabel;
 
             pm.then(function () {
-                return model.contact.findOne({
-                    where: {
-                        userName: {
-                            $iLike: vmodel.userName
-                        },
-                        id: {
-                            $ne: req.body.id
+                    return model.contact.findOne({
+                        where: {
+                            userName: {
+                                $iLike: vmodel.userName
+                            },
+                            id: {
+                                $ne: req.body.id
+                            }
                         }
-                    }
-                });
-            })
+                    });
+                })
 
-            .then(function (email) {
+                .then(function (email) {
                     if (!email) {
                         return model.contact.update(vmodel.contactObj, {
                             where: {
@@ -534,9 +543,9 @@ var api_bizGoogleSearch = function (req, res) {
                 return res.status(200).json({
                     status: status,
                     googleCompObjTrim: result
-                        // ,
-                        // dbBizList: dbBizList,
-                        //origResponse: respose
+                    // ,
+                    // dbBizList: dbBizList,
+                    //origResponse: respose
                 });
             }
 
@@ -610,7 +619,7 @@ var api_bizGoogleSearchDetail = function (req, res) {
             return res.status(200).json({
                 status: response.status,
                 googleBusinessObj: businessObj
-                    //,response: response
+                //,response: response
             });
         });
     } catch (err) {
@@ -778,9 +787,9 @@ function vmodel_add(input) {
         if (this.email == null) {
             throw new Error('email is required.');
         }
-        if (this.urlName == null) {
-            throw new Error('business web address is required.');
-        }
+        //        if (this.urlName == null) {
+        //            throw new Error('business web address is required.');
+        //        }
         /*if (this.phoneNumber == null) {
             throw new Error('business phone number is required.');
         }*/

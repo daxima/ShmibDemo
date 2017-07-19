@@ -375,11 +375,11 @@ app.controller('businessRegistrationCtrl', ['$scope', '$state', 'UserService', '
     $scope.addBusiness = function (business, addMoreBusiness, isValid) {
         $scope.spinner = true;
 
-        if (isValid && $scope.nameAccepted && !$scope.phoneNumberFailed && $scope.hasSelectedBiz) {
+        if (isValid && !$scope.phoneNumberFailed && $scope.hasSelectedBiz) {
 
             $scope.addBussinessFormValid = false;
 
-            var bizType = '';
+            var bizType = 'Gas station';
             var bizSubtype = '';
             for (obj in $scope.restype) {
                 if ($scope.restype[obj].id == business.restype) {
@@ -404,7 +404,6 @@ app.controller('businessRegistrationCtrl', ['$scope', '$state', 'UserService', '
                 bizType: bizType,
                 bizSubtype: bizSubtype,
                 priceLevel: business.pricelevel,
-                urlName: business.webaddress,
                 streetAddress: business.address,
                 city: business.city,
                 state: business.state,

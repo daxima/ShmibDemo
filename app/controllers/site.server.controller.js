@@ -339,7 +339,8 @@ exports.getCouponsPage = function (req, res) {
 exports.getUserReviewPage = function (req, res) {
     try {
         if (!req.user)
-            req.user = null;
+            return res.redirect('/auth/login');
+        //            req.user = null;
 
         models.company.findOne({
             where: sequelize.where(sequelize.fn('lower', sequelize.col('urlName')), sequelize.fn('lower', req.params.company))
@@ -621,12 +622,15 @@ exports.getBizSearchPage = function (req, res) {
                 user: req.user,
                 "title": "Biz Search"
             });
-        } else if (!req.user) {
-            res.render('bizSearch', {
-                user: null,
-                "title": "Biz Search"
-            });
+        } else {
+            return res.redirect('/auth/login');
         }
+        /* else if (!req.user) {
+                    res.render('bizSearch', {
+                        user: null,
+                        "title": "Biz Search"
+                    });
+                }*/
     } catch (err) {
         pageUtil.responseWithError(res, err);
     }

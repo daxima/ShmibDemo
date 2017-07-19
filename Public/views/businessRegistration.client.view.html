@@ -155,9 +155,9 @@
         }
     }
     
-    .dropdown-menu > .active > a,
-    .dropdown-menu > .active > a:hover,
-    .dropdown-menu > .active > a:focus {
+    .dropdown-menu>.active>a,
+    .dropdown-menu>.active>a:hover,
+    .dropdown-menu>.active>a:focus {
         background-color: #f66c66 !important;
     }
 
@@ -237,51 +237,53 @@
 
                                 </div>
 
-                                <div class="field">
-                                    <select id="restaurantType" class="input restaurantType" ng-model="business.restype" name="restauranttype" ng-options='option1.id as option1.refCode for option1 in restype' required>
+                                <!--
+<div class="field">
+    <select id="restaurantType" class="input restaurantType" ng-model="business.restype" name="restauranttype" ng-options='option1.id as option1.refCode for option1 in restype' required>
                                     </select>
-                                    <select id="foodType" ng-if="business.restype === '8'" class="input foodType" ng-model="business.foodtype" name="foodtype" ng-options='option2.id as option2.refCode for option2 in foodtype'>
+    <select id="foodType" ng-if="business.restype === '8'" class="input foodType" ng-model="business.foodtype" name="foodtype" ng-options='option2.id as option2.refCode for option2 in foodtype'>
                                     </select>
-                                    <span name="msgSelectBizType" class="foodType signup-loading err-critical" ng-show="addBussinessFormValid &&  addBussinessForm.restauranttype.$error.required">
+    <span name="msgSelectBizType" class="foodType signup-loading err-critical" ng-show="addBussinessFormValid &&  addBussinessForm.restauranttype.$error.required">
                                 <span class="errorMsg">Select Business Type</span>
-                                    </span>
-                                    <span class="errMessage err-critical" ng-show="addBussinessFormValid &&  addBussinessForm.foodtype.$error.required"><span style="margin-left: 10px;">Select Food Type</span></span>
-                                </div>
-                                <div class="clearfix"></div>
-                                <h4 class="gray grayWeb">Business Web Address</h4>
-                                <h6 class="gray grayCustomer">(customers go to this address to send their shmibs)</h6>
-                                <div class="field">
-                                    <input type="text" value="https://app.shmib.com/biz/" class="input businessUrl" readonly />
-                                    <input type="text" ng-trim="false" id="webaddress" placeholder="Business Name" class="input divWebaddress" ng-model="business.webaddress" ng-pattern="webaddress.word" name="webaddress" ng-blur="checkRestaurant(business.webaddress)" ng-focus="resetRestaurant()" ng-change="removeSpace()" required />
+    </span>
+    <span class="errMessage err-critical" ng-show="addBussinessFormValid &&  addBussinessForm.foodtype.$error.required"><span style="margin-left: 10px;">Select Food Type</span></span>
+</div>
+<div class="clearfix"></div>
+<h4 class="gray grayWeb">Business Web Address</h4>
+<h6 class="gray grayCustomer">(customers go to this address to send their shmibs)</h6>
+<div class="field">
+    <input type="text" value="https://app.shmib.com/biz/" class="input businessUrl" readonly />
+    <input type="text" ng-trim="false" id="webaddress" placeholder="Business Name" class="input divWebaddress" ng-model="business.webaddress" ng-pattern="webaddress.word" name="webaddress" ng-blur="checkRestaurant(business.webaddress)" ng-focus="resetRestaurant()" ng-change="removeSpace()" required />
 
-                                    <span class="signup-loading err-critical" ng-show="nameLoading">
+    <span class="signup-loading err-critical" ng-show="nameLoading">
                                 <img src="images/loadingSpinnerSmall.gif" class="errorImg" />
                             </span>
 
-                                    <span class="signup-loading err-critical" ng-show="nameAccepted">
+    <span class="signup-loading err-critical" ng-show="nameAccepted">
                                 <img src="images/spinnerCheckSmall.gif" class="errorImg" />
                             </span>
 
-                                    <span name="msgInvalidWebAddress" class="signup-loading err-critical" ng-show="addBussinessForm.webaddress.$error.pattern &&
+    <span name="msgInvalidWebAddress" class="signup-loading err-critical" ng-show="addBussinessForm.webaddress.$error.pattern &&
 								  !addBussinessForm.webaddress.$error.required">
 								<span class="errorMsg">Invalid web address.</span>
-                                    <img src="images/failSmallBlue.gif" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Invalid web address." />
-                                    </span>
+    <img src="images/failSmallBlue.gif" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Invalid web address." />
+    </span>
 
-                                    <span name="msgNoWebAddress" class="signup-loading err-critical" ng-show="addBussinessFormValid &&
+    <span name="msgNoWebAddress" class="signup-loading err-critical" ng-show="addBussinessFormValid &&
 								  addBussinessForm.webaddress.$error.required">
 								<span class="errorMsg">Provide business web address.</span>
-                                    <img src="images/failSmallBlue.gif" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Please provide business web address." />
-                                    </span>
+    <img src="images/failSmallBlue.gif" tooltip-placement="top" class="red-tooltip errorImg" uib-tooltip="Please provide business web address." />
+    </span>
 
 
-                                    <span name="msgWebAddressInUse" class="signup-loading err-critical" ng-show="nameFailed &&
+    <span name="msgWebAddressInUse" class="signup-loading err-critical" ng-show="nameFailed &&
                                  (!addBussinessForm.webaddress.$error.required || !addBussinessForm.webaddress.$error.pattern)">
                                 <span class="errorMsg">Web address already in use.</span>
-                                    <img src="images/failSmallBlue.gif" tooltip-placement="top" uib-tooltip="Web address already in use." class="red-tooltip errorImg" />
-                                    </span>
+    <img src="images/failSmallBlue.gif" tooltip-placement="top" uib-tooltip="Web address already in use." class="red-tooltip errorImg" />
+    </span>
 
-                                </div>
+</div>
+-->
                                 <h4 class="gray grayLocation">Business Location</h4>
                                 <div class="field" style="margin-bottom:18px;">
                                     <input type="text" id="street_address_long" class="input updatefield" placeholder="Address" ng-model="business.address" name="address" style="display: inline-block;" readonly />
