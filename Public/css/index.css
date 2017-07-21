@@ -203,7 +203,7 @@ a:focus {
     border-left: 1px solid #e7e7e7;
 }
 
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav>li>a {
     height: 64px;
 }
 
@@ -296,7 +296,7 @@ Updated By : Rehan
     color: #f66c66 !important;
 }
 
-#topBar .navbar-brand > img {
+#topBar .navbar-brand>img {
     max-height: 40px;
 }
 
@@ -316,26 +316,26 @@ Updated By : Rehan
     padding: 22px 15px;
 }
 
-#topBar .navbar-default .navbar-nav > li > a {
+#topBar .navbar-default .navbar-nav>li>a {
     height: 90px;
     line-height: 58px;
     color: #ffffff;
     text-align: right;
 }
 
-#topBar .navbar-default .navbar-nav > li > a > span {
+#topBar .navbar-default .navbar-nav>li>a>span {
     font-size: 20px;
 }
 
-#topBar .navbar-default .navbar-nav > .active > a,
-#topBar .navbar-default .navbar-nav > .active > a:hover,
-#topBar .navbar-default .navbar-nav > .active > a:focus {
+#topBar .navbar-default .navbar-nav>.active>a,
+#topBar .navbar-default .navbar-nav>.active>a:hover,
+#topBar .navbar-default .navbar-nav>.active>a:focus {
     background: #EC5555;
 }
 
-#topBar .navbar-default .navbar-nav > .open > a,
-#topBar .navbar-default .navbar-nav > .open > a:hover,
-#topBar .navbar-default .navbar-nav > .open > a:focus {
+#topBar .navbar-default .navbar-nav>.open>a,
+#topBar .navbar-default .navbar-nav>.open>a:hover,
+#topBar .navbar-default .navbar-nav>.open>a:focus {
     background: #EC5555;
 }
 
@@ -503,35 +503,35 @@ Updated By : Rehan
     left: 2.1em;
 }
 
-.red-tooltip + .tooltip.top > .tooltip-inner {
+.red-tooltip+.tooltip.top>.tooltip-inner {
     background-color: #f00;
 }
 
-.red-tooltip + .tooltip.top > .tooltip-arrow {
+.red-tooltip+.tooltip.top>.tooltip-arrow {
     border-top-color: #f00;
 }
 
-.red-tooltip + .tooltip.bottom > .tooltip-inner {
+.red-tooltip+.tooltip.bottom>.tooltip-inner {
     background-color: #f00;
 }
 
-.red-tooltip + .tooltip.bottom > .tooltip-arrow {
+.red-tooltip+.tooltip.bottom>.tooltip-arrow {
     border-bottom-color: #f00;
 }
 
-.red-tooltip + .tooltip.left > .tooltip-inner {
+.red-tooltip+.tooltip.left>.tooltip-inner {
     background-color: #f00;
 }
 
-.red-tooltip + .tooltip.left > .tooltip-arrow {
+.red-tooltip+.tooltip.left>.tooltip-arrow {
     border-left-color: #f00;
 }
 
-.red-tooltip + .tooltip.right > .tooltip-inner {
+.red-tooltip+.tooltip.right>.tooltip-inner {
     background-color: #f00;
 }
 
-.red-tooltip + .tooltip.right > .tooltip-arrow {
+.red-tooltip+.tooltip.right>.tooltip-arrow {
     border-right-color: #f00;
 }
 
@@ -730,7 +730,7 @@ Updated By : Rehan
     height: 100px;
 }
 
-.uil-ring-css > div {
+.uil-ring-css>div {
     position: absolute;
     display: block;
     width: 100px;
@@ -898,13 +898,13 @@ Updated By : Rehan
     padding: 0;
 }
 
-.profileTopBar #topBar .navbar-default .navbar-nav > .open > a,
-.profileTopBar #topBar .navbar-default .navbar-nav > .open > a:hover,
-.profileTopBar #topBar .navbar-default .navbar-nav > .open > a:focus {
+.profileTopBar #topBar .navbar-default .navbar-nav>.open>a,
+.profileTopBar #topBar .navbar-default .navbar-nav>.open>a:hover,
+.profileTopBar #topBar .navbar-default .navbar-nav>.open>a:focus {
     background: #676356;
 }
 
-.profileTopBar #topBar .navbar-default .navbar-nav > li > a {
+.profileTopBar #topBar .navbar-default .navbar-nav>li>a {
     line-height: 90px;
     height: 119px;
 }
@@ -919,7 +919,7 @@ Updated By : Rehan
     padding: 0;
 }
 
-.profileTopBar #topBar .navbar-default .container-fluid .navbar-collapse .navbar-nav > li {
+.profileTopBar #topBar .navbar-default .container-fluid .navbar-collapse .navbar-nav>li {
     float: right;
     margin: 0 -5px 0 0;
 }
@@ -959,4 +959,9 @@ Updated By : Rehan
         float: left;
         width: auto;
     }
+}
+
+.dropdown-menu {
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
 }
