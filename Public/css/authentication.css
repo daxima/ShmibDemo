@@ -434,6 +434,10 @@ label.meal:before {
     margin: 30px 0;
 }
 
+.signup{
+    font-size: 28px;
+}
+
 @media (max-width: 767px) {
     .signupMessage {
         padding-top: 20px;
